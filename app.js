@@ -125,7 +125,7 @@ dizi tanımlamak istiyorsak let rakamlar=[1,2,3];
 **  = Üs Alma Operatörü
 
 ! İşlem yaparken işlem önceliği için parantezlere dikkat edin!!!
-!Türkçe karakter kullanmamaya dikkat edin.
+! Türkçe karakter kullanmamaya dikkat edin.
 
 let sayi1=5;
 let sayi2=10;
@@ -159,7 +159,7 @@ sayi-=2;
 console.log(sayi);
 dersek konsolda 2 sayısını görürüz. Bölü de aynı şekilde çalışır.
 
-!Alt+Shift+S ile kodlarınızı otomatik toplayabilirsiniz.
+! Alt+Shift+S ile kodlarınızı otomatik toplayabilirsiniz.
     
 *=      = Sayı değerinin üssünü alır ve atar.
 /=      = Sayı değerinin bölümünü sayıya atar
@@ -185,7 +185,7 @@ console.log((para>3000&& hakSayisi>1) || (yas>18 && saglikliMi))
 *KARŞILAŞTIRMA OPERATÖRLERİ*
 
 == : Eşit Mi
-!= : Eşit Değil Mi?
+! = : Eşit Değil Mi?
 >  : Büyük Mü?
 <  : Küçük Mü?
 >= : Büyük Veya Eşit Mi?
@@ -304,5 +304,427 @@ if(koşul){
 
 }
 
-*/
 
+      *Çoklu If Yapısı
+
+-Kullanıcının adını ve tckimlik numarasını isteyeceğiz kimlik numarası 11 karakterden oluşsun.
+
+let ad= prompt("İsminizi Giriniz :")
+let teckn= prompt("TC'nizi Giriniz :")
+console.log(isim);
+
+funciton kontrol(ad, tckn){
+    if(ad!=""){
+        if(tckn.length==11){
+            console.log("İsim ve TCKN girildi.");
+
+        }
+        else{
+            console.log("Lütfen geçerli bir kimlik numarası giriniz.");
+
+        }
+
+    }else{
+        console.log("İsim Alanını Boş Bırakmayınız!");
+    }
+}
+
+Kod çalıştırıldıktan sonra metodu sonlandırmak istiyorsak Return anahtar kelimesini kullanabiliriz.
+
+Örnek-2
+
+kontrol2(ad,tckn);
+
+function kontrol2(ad,tckn){
+    if(ad==""){
+        console.log("Lütfen isminizi giriniz!");
+        return;
+    }
+    if(tckn.length!=11){
+        console.log("Lütfen geçerli bir kimlik numarası giriniz!");
+        return;
+    }
+    console.log("Başarıyla giriş yapıldı.")
+}
+
+
+   *Beden Kitle Endeksi Bulma*
+
+Kiloyu boyun karesine bölerek beden kitle endeksini bulabiliriz.
+
+let boy= Number(prompt("Boyunuzu Giriniz :"));
+let kilo= Number(prompt("Kilonuzu Giriniz :"));
+let sonuc= kilo/(boy*2);
+
+if (sonuc<18.5){
+
+console.log("İdeal Kilonun Altındasınız");
+
+}
+else if(sonuc>=18.5 && sonuc<=24.9){
+
+console.log("İdeal Kilodasınız");
+
+}else if(sonuc>=25 && sonuc<=29.9){
+
+console.log("İdeal Kilonun Üstündesiniz");
+
+}else if(sonuc>=30 && sonuc<=39.9){
+
+  console.log("Obezsiniz");  
+
+}else if(sonuc>=40){
+    
+     console.log("Morbiz Obezsiniz"); 
+}
+
+    *BENZİN İSTASYONU UYGULAMASI*
+
+1-Dizel : 24.53
+2-Benzin : 22.25
+3-LPG : 11.1
+
+Gelen müşteriden alacağımız bilgiler:
+1-Yakıt Tipi
+2- Yüklenecek Yakıt Litresi
+
+let dizel= 24.53 , benzin= 22.25, lpg= 11.1;
+const yeniSatir= "/r/n"
+
+const yakitMetni = "1-Dizel"+yeniSatir
++ "2-Benzin"+ yeniSatir
++"3-LPG" +yeniSatir
++ "Yakıt Türünüzü Seçiniz: ";
+
+/r/n kullanırsak alt alta yazdırır.
+
+let yakitTipi = prompt(yakitMetni);
+yakit tipi 1-2-3 değilse kodlar çalışmayacak aşağıdaki kod bloğu bu işe yarıyor.
+if(yakitTipi=="1"|| yakitTipi== "2"|| yakitTipi==3){
+if (yakitMetni=="1"){
+
+    matematiksel işlem yapacaksak Number'a çevirmemiz gerek.
+    let yakitLitresi = Number(prompt("Yakıt Litresini Giriniz :"));
+let bakiye= Number(propmt("Lütfen Bakiyenizi Giriniz: "));
+   let odenecekTutar= dizel*yakitLitresi;
+   if (odenecekTutar> bakiye){
+    alert("Bakiyeniz Yetersiz, Fakirsiniz.")
+}
+else{
+    alert("Bakiyeniz Yeterlidir.")
+}
+}else if(yakitTipi=="2"){
+      let odenecekTutar= benzin*yakitLitresi;
+   if (odenecekTutar> bakiye){
+    alert("Bakiyeniz Yetersiz, Fakirsiniz.")
+}
+else{
+    alert("Bakiyeniz Yeterlidir.")
+}
+}else if(yakitTipi=="3"){
+      let odenecekTutar= lpg*yakitLitresi;
+   if (odenecekTutar> bakiye){
+    alert("Bakiyeniz Yetersiz, Fakirsiniz.")
+}
+else{
+    alert("Bakiyeniz Yeterlidir.")
+}
+}
+
+}else {
+    alert("Lütfen geçerli bir yakıt türü seçiniz!");
+}
+
+    *Switch Case*
+
+
+switch(deger){
+    case 1:
+        kodlar
+        break;
+    case 2:
+        kodlar
+        break;
+    case 3:
+        kodlar
+        break;
+    default:
+        kodlar
+        break;
+}
+
+      *Switch Case Örnek Haftanın Günleri
+
+If-Else gibi caselerdan yalnızca biri çalışır. Break koymazsak diğer caselerda çalışır kodumuzda komplike hatalar olur.
+Bir case'e girdikten sonra diğerine girmesini istemiyorsak break koymalıyız.
+    
+let deger= Number((prompt("Seçiminizi Giriniz :")));
+
+switch(deger){
+case 1:
+    alert("Pazartesi")
+    break;
+case 2:
+    alert("Salı")
+    break;
+case 3:
+    alert("Çarşamba")
+    break;
+case 4:
+    alert("Perşembe")
+    break;
+case 5:
+    alert("Cuma")
+    break;
+case 6:
+    alert("Cumartesi")
+    break;
+case 7:
+    alert("Pazar")
+    break;
+    
+default:
+    alert("1 İle 7 Arasında Geçerli Bir Değer Giriniz")
+    break;
+
+}
+
+     *Switch Case ATM Örneği*
+
+1- Bakiye Görüntüleme
+2- Para Çekme
+3- Para Yatırma
+4- Çıkış
+
+let bakiye=1000;
+let yeni= "/r/n"
+    
+let metin= "1-Bakiye Görüntüleme"+yeni
++"2-Para Çekme"+yeni
++"3-Para Yatırma"+yeni
++"4-Çıkış"+yeni
++"Lütfen Bir Değer Seçiniz!"
+
+let secim=prompt(metin);
+switch(secim){
+    case "1":
+        alert("Bakiyeniz :"+bakiye);
+        break;
+    case "2":
+        let cekilecekTutar=Number(prompt("Çekmek İstediğiniz Tutarı Giriniz :"));
+        if(cekilecekTutar<bakiye){
+            bakiye= bakiye- cekilecekTutar;
+            alert("Kalan Bakiye :"+bakiye);
+        }else{
+            alert("O kadar zengin değilsiniz"+ yeni+ "Bakiyeniz :" +bakiye +" "+ "Çekilecek Tutar: "+ cekilecekTutar);
+        }
+        break;
+
+        case "3":
+            let yatirilacakTutar= Number(prompt("Yatırılacak Tutarı Giriniz: "));
+            bakiye= bakiye+ yatirilacakTutar;
+            alert("Güncel Bakiyeniz :"+ bakiye);
+        break;
+
+        case "4":
+            alert("Sistemden Başarıyla Çıkış Yapılmıştır...");
+        break;
+
+        default:
+            alert("Lütfen 1 - 4 Arasında Değer Giriniz !!!");
+            break;
+}
+
+
+         *Switch Case -Son Örnek- TYT Puan Hesaplama
+
+1- Türkçe 40  -4 puan
+2-Matematik 40
+3- Sosyal Bilimler 20
+4- Fen Bilimleri 20
+
+   -------> 100 Puanı ÖSYM Veriyor.
+   -------> Okul Puanı Max 60 Veriyor.
+
+   Başlangıç değeri olarak hepsine 0 veriyoruz.
+
+   let turkcedogru, turkceyanlis =0;
+   let matematikdogru, matematikyanlis =0;
+   let sosyaldogru, sosyalyanlis =0;
+   let fendogru, fenyanlis =0;
+   let puan= 0;
+   let okulpuani;
+
+   let yeni= "/r/n";
+   let mesaj= "TYT Puan Hesaplamasına Hoşgeldiniz..."+yeni
+   +"1- Puan Hesapla"+yeni
+   +"2- Çıkış Yap";
+
+   let secim= propmt(mesaj);
+
+   switch(secim){
+    case "1":
+
+        okulpuani= Number(prompt("Okul Puanınızı Giriniz :"))
+
+        turkcedogru= Number(prompt("Türkçe Doğru Sayısı :"));
+        turkceyanlis= Number(prompt("Türkçe Yanlış Sayısı :"));
+
+        matematikdogru= Number(prompt("Matematik Doğru Sayısı :"));
+        matematikyanlis= Number(prompt("Matematik Yanlış Sayısı :"));
+
+        sosyaldogru= Number(prompt("Sosyal Doğru Sayısı :"));
+        sosyalyanlis= Number(prompt("Sosyal Yanlış Sayısı :"));
+
+        fendogru= Number(prompt("Fen Doğru Sayısı :"));
+        fenyanlis= Number(prompt("Fen Yanlış Sayısı :"));
+
+        ! 4 yanlış bir doğruyu götürüyor !
+        let dogruNet= turkcedogru+matematikdogru+sosyaldogru+fendogru;
+        let YanlisNet= turkceyanlis+matematikyanlis+sosyalyanlis+fenyanlis;
+        let kalandogru= dogrunet- (YanlisNet/4);
+        puan= (kalandogru*4)+ 100+ okulpuani ;
+        alert("TYT Puanınız: "+puan);
+
+        break;
+
+    case "2":
+        alert("Uygulamadan Başarılı Bir Şekilde Çıkış Yaptınız.");
+        break;
+    
+        default:
+            alert("Geçerli Bir Değer Giriniz");
+            break;
+
+
+
+            *Tür Dönüşümleri*
+
+  strings,numbers,boolens,undefined and null. == Primitive
+  object,function    == Modern
+
+  Örneğin bir veri tabanımız var ve veritabanından değer almak istiyoruz değer number olarak geldi ama biz string'e dönüştürmek istiyorsak
+  tür dönüşümlerini kullanmamız gerekir. Bir tipten bir tipe dönüştürmeye denilir.
+
+let a =5;
+let b= "10";
+
+console.log(a+b); yazarsak 510 değeri gelir. Türler aynı olmadığı için toplanamaz.
+
+   ! String Veri Tipinden Number Veri Tipine Dönüştürme
+
+let c= Number(b);
+console.log(typeof c);
+console.log(a+c);  dersek 15 cevabını alırız.
+
+ya da 
+
+let a =5;
+let b= Number("10");
+console.log(a+b);  şeklinde yaparsak da 15 cevabını alırız.
+
+veya
+
+parseInt() kullanırız. parseInt window objesi içinde tanımlanmış bir metottur. parseInt yerine parseFloat da kullanılabilir.
+parseInt ve parseFloat arasındaki fark parseInt kullanırsak virgüllü sayının noktadan sonrasını atıp tam sayı olarak verir. parseFloat ise virgülüyle birlikte alır.
+
+let a =8;
+let b= parseInt("12");
+console.log(a+b);  şeklinde kullanılır.
+
+
+   }
+
+   ! Number Veri Tipinden String Veri Tipine Çevirme
+
+
+let x= 55;  Örneğin bunu string veri tipine çevirmek istiyoruz.
+let x= String(55);  olarak yazmamız gerekir. ya da:
+let x= (55).toString();  yazarak kullanabiliriz.
+
+   ! Boolen Tipindeki Değeri String'e Çevirme
+
+let sonuc= String(true);
+console.log(typeof sonuc);
+console.log(sonuc);
+
+   ! Sayı Olmayan Bir Şeyi Number'a Çevirmeye Çalışırsak NaN (Not a Number) Adlı Bir Hata Alırız.
+
+
+   ! Bir Objeyi Ya Da Array'i String'e Çevirme
+
+let rakamlar = String([1,2,3,4]);
+
+
+   ! Proje Yaparken Veya Hata Alınca Breakpoint(Debugger) Kullanmayı Unutmayın. Ayrıca Tooltip'leri Okumanızda Kodu Anlamanız Konusunda Size Hayli Yardımcı Olacaktır.
+   ! Tooltip Açıklama Satırı Gibidir. Yazılımcıyı Bilgilendiren Küçük Yorum Satırlarıdır Diyebiliriz.
+   ! Breakpoint (Debugger)' Bir Hata Aldığımızda Veya Bir Kod Bloğunu Anlamadığımızda Kodları Adım Adım Çalıştırmak İçin Kullanırız. Bunu Kullanabilmek İçin debuger; Denilen Bir 
+   !  Anahtar Kelime Kullanmamız Gerek. Adım Adım Çalıştırmak İstediğimiz Projede NErden BAşlamak İStiyorsak O Kod Blogu Öncesi debugger; Yazarız. Debugger'ı Nereye Koyarsak Orada
+   !  Çalışmaya Başlar.
+
+
+
+      *Döngülere Giriş For/While/Do-While/ForEach*
+
+Bir şeylerin sürekli tekrarlanmasını istediğimiz yerlerde kullanırız. Tek satırda yazdığımız kodu istediğimiz kadar çalıştıran kod parçalarıdır.
+ForEach dizilerle birlikte kullanılır o yüzden şimdilik ForEach'i üstünkörü göreceğiz.
+
+      *For Döngüsü Çalışma Yapısı
+
+    for(degişken; koşul; arttırma-azaltma){
+        kodlar
+    }
+
+    Bu Kodları Çalıştırdıktan Sonra Alttaki Kodları Çalıştırıyor.
+
+    for(let i=1;i<10;i++){
+        console.log(i);
+    }
+
+      *For Döngüsü Örnek
+
+    1'den 10!a Kadar Yazdıralım
+
+for (let i=1;i<=10;i++){
+    console.log(i)
+}
+
+      *For Döngüsü Örnek - 2
+
+    1'den 10'a Kadar Olan Çift Sayıları Yazdıralım
+
+    +=2 i'nin üzerine 2 koy her seferinde 2 arttır demektir.
+
+for (let i=0; i<=10;i+=2){
+console.log(i);
+}
+
+    Tekleri Yazdıramk İsteseydik i'yi 1'den Başlatırdık:
+
+for (let i=1; i<=10;i+=2){
+console.log(i);
+}
+
+     İ Çift Sayı Olunca Buse Tek Sayı Olunca Berat Yazdıran Kod:
+
+for(let i=0;i<=10;i++){
+    if(i%2==0){
+        console.log("Buse");
+    }
+    else{
+        console.log("Berat");
+    }
+}
+
+      50'den 1'e Kadar Olan Sayıların Toplamı:
+
+let toplam=0;
+for(let i=1;i<=50;i++)
+{
+    toplam+=i;
+    console.log(i);
+}
+console.log("Toplam :" ,toplam);
+For Döngüsünün İçine Değil Dışına Yazmamızın Sebebi Her Döngü Döndükten Sonra Toplamı Görmek Yerine Döngü Bitince Toplamı Görmek İstememiz.
+
+*/
