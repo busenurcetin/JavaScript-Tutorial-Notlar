@@ -727,4 +727,83 @@ for(let i=1;i<=50;i++)
 console.log("Toplam :" ,toplam);
 For Döngüsünün İçine Değil Dışına Yazmamızın Sebebi Her Döngü Döndükten Sonra Toplamı Görmek Yerine Döngü Bitince Toplamı Görmek İstememiz.
 
+
+              * Break Ve Contiune Anahtar Kelimeleri *
+
+        1'den 10'a Kadar Olan Sayıları Yazdıralım 8'e Geldiğimizde Döngüden Çıkalım.
+
+for (int i=1;i<=10;i++)
+{
+    if(i==8){
+        break;
+    }
+}
+
+ ya da
+
+let sayac=1;
+
+while(sayac<=10)
+{
+    console.log(sayac);
+    if(sayac==8)
+    {
+        break;
+    }
+    sayac++;
+}
+
+Bu Gibi Döngülerde Break Kullanılır. Yani Break'i Dilediğimiz Zaman Döngüden Çıkmak İçin Kullanırız.
+Contiune İse Döngüyü 1 Kere Kırmak İçin Kulanılır. Örneğin Konsolda 1-10 Arası Sayıları Yazdırmak İstiyoruz
+Fakat 8'in Yazmasını İstemiyorsak Contiune Kullanırız:
+
+while(sayac<=10)
+{
+    sayac++;
+    if(sayac==8)
+    {
+        contiune;
+    }
+    console.log(sayac);
+}
+
+       * Çarpım Tablosu Uygulaması *
+
+1*1=1
+1*2=2
+1*3=3 gibi gibi gidecek 
+
+for (let i=1;i<=10;i++){
+    for (let j=1;j<=10;j++){
+        console.log(i+"x"+j+"="+(i*j));
+    }
+    console.log(">>>>>>>>>>>>>");
+}
+
+Dıştaki Döngü 1 Kere İçteki Döngü 10 Kere Dönüyor. 1'i 10'a Kadar Çarptıktan Sonra Koşul Sağlamadığı İçin Çizgiye Çekti Ve
+Bir Daha Döngünün İçine Girerek 2'den Devam Etti Ve Aynı Şekilde 10'a Kadar Devam Edip Durdu.
+
+         * Asal Sayı Bulma Uygulaması *
+
+Asal Sayı: 1'e Ve Kendisinden Başka Böleni Olmayan Sayıdır.
+Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımızı En Yakın Int Değerine Yuvarlar.
+7.7 Veya 7.9 Yazdığımızda Sayıyı Direkt 7'ye Çekiyor.
+
+    let sayi= Number(prompt("Sayı Giriniz : "));
+    let sonuc= true;
+
+        for(let i=2;i<= Math.floor(sayi/2);i++){  
+            if(sayi%i==0){
+                Asal Değildir
+                sonuc= false;
+                break;
+            }
+        }
+        if(sonuc){
+            alert(sayi + "asaldır.");
+        }
+        else{
+            alert(sayi + "asal değildir.");
+        }
+
 */
