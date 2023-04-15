@@ -806,4 +806,331 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
             alert(sayi + "asal değildir.");
         }
 
+
+        * Faktöriyel Hesaplama *
+
+    Faktöriyel hesaplama bir sayının kendinden 1'e kadar olan çarpımına denir.
+
+    let sayi= Number(propmt("Bir Sayı Giriniz :"));
+    let carpim=1;
+
+    for(let i=1;i<=sayi;i++){
+        carpim=carpim*i;
+    }
+    alert ("Sonuç : "+carpim);
+
+        * Armstrong Sayısı Uygulaması *
+
+153,407,370 sayıları armstrong sayılardır. Armstrong sayı bir sayının her bir rakamın kökünün toplamının kendisini vermesidir.
+
+    let sayi= prompt("Bir Sayı Giriniz :");
+    for(let i=0;i<sayi.length;i++){
+        let rakam = sayi.charAt(i);
+        toplam+=rakam*rakam*rakam;
+    }
+
+    if(Number(sayi)==toplam){
+        alert("Armstrong Sayısıdır.");
+    }
+    else{
+        alert("Armstrong Sayısı Değildir.");
+    }
+    
+
+    !Length Sayının Basamağı Demektir i<sayi.length dediğimizde sayının basamağı kadar dön demiş oluyoruz.
+    ! Number'a çevirirsek sayının içinde char length gibi özellikleri göremeyiz bu yüzden çevirmiyoruz. Bu özellikler string tipinin içinde
+    !  yer alan özelliklerdir. Bu yüzden bunları Number'a çevirirsek bu özellikleri kullanamayız.
+
+            * Metotlar (Methods) *
+
+    Parça paarça kodlayıp bu parçaları tek bir yerde birleştiriyoruz. Kodların okunmasının kolay olması için kullanılır. 1000 satırlık kodu tekrar yazmak yerine metot halinde kullanıp
+      tek satırda yazarak kolayca kullabiliriz.
+
+        * Parametresiz Ve Geriye Değer Döndürmeyen Metot Tanımlamak
+
+      Bir metot oluşturuken function yazıp sonrasında metotun ismini veriyoruz sonrasında (){} yazıyoruz:
+      Bu metotu çalıştırmak için yazdir(); şeklinde metotu çağırıyoruz.
+
+      function yazdir(){
+        console.log("Buse Nur");
+      }
+
+      yazdir();
+
+      Bu metotu bir daha çağırmak istiyorsak bir kere daha yazdir(); yazıyoruz. Metotla işi bittikten sonra çağrıldığı yere geri dönüyor.
+
+      * Örnek 2 *
+
+      function topla(){
+        console.log(5+7);
+      }
+
+      topla();
+
+
+        * Parametreli Metot Tanımlama
+
+      function yazdir(isim,soyisim){
+        console.log(isim+" "+soyisim);
+      }
+      yazdir("Buse Nur", "Çetin");
+
+      Şeklinde Tanımlanan Metotlar Parametreli Metotlardır. Sonrasında yazdir ("Berat", "Çetin"); deseydik
+       Buse Nur Çetin yazdırdıktan sonra Berat Çetin yazdıracaktı.
+
+         * Bir Sayının Küpünü Alan Bir Metot Yazalım *
+
+       cube(3);
+       cube(5);
+
+       function cube(sayi){
+        console.log(sayi*sayi*sayi);
+       }
+
+         * Kullanıcıdan Yaşını Alalım 18'ten Küçükse Ehliyet Alamasın *
+
+    Metotlar 2 kelimeden oluşuyorsa ikinci kelimenin ilk harfi büyük yazılır.
+
+    let yas = Number(prompt("Yaşınızı Giriniz :"));
+    kontrolEt(yas);
+
+    function kontrolEt(yas){
+        if(yas>18){
+            console.log("Ehliyet Alabilirsiniz.");
+        }
+        else{
+            console.log("Ehliyet Alamazsınız.");
+        }
+    }
+
+    Bir yerde parantez aç kapa varsa bu metottur. kontolet(); gibi.
+
+         * Geriye Değer Döndüren Metot Tanımlamak *
+
+     Örneğin Bir Sayının Küpünü Alalım Ve Sonucu Geriye Döndürelim.
+
+     cube(3);
+
+     function cube(sayi){
+        let sonuc = sayi*sayi*sayi;
+        console.log(sonuc);
+     }
+
+     Burdan çıkan sonucu alıp başka bir yerde kullanmak isteyebiliriz. Bu şekilde yazarsak sonuçumuz 
+      kıvırcık parantezler içinde kalır bu sonuca başka bir yerden erişemeyiz. Başka bir yerden erişmek istiyorsak return 
+      anahtar kelimesini kullanırız.
+
+      let donenDeger = cube(3);
+      console.log(donenDeger);
+
+     function cube(sayi){
+        let sonuc = sayi*sayi*sayi;
+        return sonuc;
+     }
+
+     Sonucu metotun çağrıldığı yer olan cube(3)'e geri döndüreceği için dönen değeri yakalıyoruz.
+
+     kareAl(donenDeger);
+
+     function kareAl(sayi){
+        let sonuc = sayi*sayi;
+        console.log(sonuc);
+     }
+
+     ! Return Anahtar Kelimesinden Sonra Yazılan Hiçbir Kod Çalışmaz.
+     ! Return Bir Değeri Metotun Dışarısına Çıkarmak, Taşımak İçin Kullanılır.
+     ! Void Geriye Değer Döndürmeyen Metot Demektir.
+
+         * Harf Sayısı Uygulaması *
+
+     Örneğin kullanıcı A harfi cümlenin içinde kaç defa geçiyor diye soracak bizde kullanıcıya bunun cevabını vereceğiz.
+     Şimdilik Örnek Olarak Bir Metin Yazıp Kullanıcıya Hangi Harfi İstediğini Soralım:
+
+     let metin = "Şuanda Bursa'da JavaScript Öğreniyorum."
+     let harf(prompt("Harfi Giriniz :"));
+
+     funcion bul(harf){
+        for(let i=0;i<metin.length;i++){
+            if(metin.charAt(i)==harf){
+                toplam +=i;
+            }
+        }
+        return toplam;
+     }
+
+     Büyük Harf/ Küçük Harf Hassasiyetinin Olmamasını İstiyorsak:
+
+     funcion bul(harf){
+        for(let i=0;i<metin.length;i++){
+            if(metin.charAt(i).toLowerCase==harf.toLowerCase()){
+                toplam +=i;
+            }
+        }
+        return toplam;
+     }
+
+     Kullanırız. toLowerCase büyük olan harfi küçük harfe dönüştürerek hassasiyeti önler.
+
+         * Mükemmel Sayı Uygulaması *
+
+     6-28-496 Mükemmel Sayılardır. Bir Sayının Tam Bölen Sayısının Toplamı, Sayının İki Katına Eşitse Bu Sayı Mükemmel Sayıdır. Örneğin:
+
+     6 = 1,2,3,6 Toplamları= 12  6*2=12
+
+     perfectNumber(6);
+     perfectNumber(496);
+     perfectNumber(407);
+     perfectNumber(2);
+
+     function perfectNumber(number){
+        let toplam=0;
+        for(i=2;number/2;i++){
+            if(number%i==0){
+                toplam+=i;
+            }
+        }
+        toplam+= 1+number;
+        if(toplam== number*2){
+            console.log("Mükemmel Sayıdır.");
+        }
+        else{
+            console.log("Mükemmel Sayı Değildir.");
+        }
+     }
+
+         * Decimal To Binary Conversion (10'luk Sayıyı 2'liğe Çevirme Uygulaması) *
+
+     Decimal ondalıklı sayı demektir. Binary ikilik sayı demektir 0 ve 1'lerden oluşur.
+
+     convertDecimalToBinary ondalıklı sayıyı ikilik sisteme çevirmemize yarayan bir metottur.
+     Math.floor metotu sayesinde sayıyı ikiye böldükten sonra noktadan sonrasını atıp tam sayıyı alıyoruz.
+
+     Örneğin 10 sayısını kullanalım. Siz İstediğiniz Sayıyı Kullanabilirsiniz.
+
+     convertDecimalToBinary(10); 
+
+     function convertDecimalToBinary(number){
+
+        let binary= "";
+        while(true){
+            binary+=(number%2).toString();
+            number=Math.floor(number/2);
+            if(number==1){
+                Artık Bölmek Yok Döngüden Çıkacağız.
+                binary+=1;
+                break;
+            }
+        }
+        let result = reverse(binary);
+        console.log("Sonuç :"+ result);
+     }
+
+     Bu Metotu Ters Çevirmemiz Gerekiyor. Ters Çevirmek İçin:
+
+     function reverse(binary){
+        let reverseBinary = "";
+        for(let i=binary.length-1;i>=0;i--){
+            reverseBinary+=binary.charAt(i);
+        }
+
+        return reverseBinary;
+     }
+
+         * Binary To Decimal Conversion (İkilik Sayıdan Onluk Sayıya Çevirme)
+
+     İkilik Sayıyı Onluk Sayıya Çevirmek İstiyorsak Sağdan Sola Doğru 2 üzeri 0, 2 üzeri 1, 2 üzer 2 şeklinde yazarız.
+       Sonrasında Bu Sayıları Bunlara Denk Gelen Sayılarla Çarpıp Hepsini Toplarız.
+
+     let binary= "1001"
+     let us=0;
+
+     function convertBinaryToDecimal(binary){
+        let toplam =0;
+        for(let i=binary.length-1;i>=10;i--){
+           toplam+=  Number(binary.charAt(i)) * Math.pow(2,us);
+           us++;
+        }
+        console.log("Sonuç :"+toplam);
+     }
+     convertBinaryToDecimal(binary);
+
+         * Metotlar Bitiş *
+
+         * Dizilere (Array) Giriş
+
+     let dizi_ismi= ["Buse", "Berat", "Damla", "Hakan","Okan"];
+     let dizi_ismi= [1, true, "Buse", '?', null,5.12];
+     Normalde başka programlama dillerinde farklı türdeki dizileri aynı dizi içinde tanımlayamyız. Fakat JavaScript bunu yapmamıza izin verir.
+     Dizilerde index dediğimiz bir kavram kullanılır. Diziler saymaya 0'dan başlar.
+
+         * Dizilere Giriş *
+    
+     ! Kutu Parantezi ALT GR + 8 ve 9'u Kullanarak Yapabilirsiniz.
+
+     let sayilar= [0,1,2,3,4,5,6,7,8,9];
+     console.log(sayilar[6]); yazarsak 6 sayısını bize getirir.
+
+     Eğer Olmayan Bir Index Değeri İsterseniz Yani 5 Değerli Bir Index'ten 10. Değeri İstediniz
+      Diğer Programlama Dillerinde ArrayIndexOutOfBoundException Hatası Alırken JavaScript'te Böyle Bir Hata Almazsınız.
+      Onun Yerine Undefined Hatası Alırsınız.
+
+     let sayilar= [0,1,"Buse",3,4,5,"Nur",7,8,9];
+     Örneğin Ben Bu Dizideki Buse Değerini Çetin Olarak Değiştirmek İstiyorum Bunu Şu Şekilde Yapabiliriz:
+
+     sayilar[2]= "Çetin";
+     console.log(sayilar[2]);
+
+     Ya Da 
+     
+     sayilar[sayilar.length-6]="Çetin"
+
+     Olarak Kullanabilirsiniz. Indexlerle Erişiyoruz Indexler Üzerinden Değerlerini Değiştirebiliriz.
+
+     let isimler=["Buse", "Nur", "Çetin", "Berat"];
+     console.log(isimler);
+
+     Olarak Yazdırırsanız Index Numarasıyla Birlikte İsimleri Konsolda Görebilirsiniz.
+
+     let karisikDizi= [1, "Buse", 2,3,7,0, true,null,undefiened];
+     console.log(karisikDizi[3]);
+
+     * İki Şekilde Dizi Oluşturabiliriz *
+
+     1) let dizi1=[];
+     2) ket dizi2= new Array(); Bu Şekilde Dizi Tanımlamak Nesne Tanımlayarak Dizi Tanımlamaktır.
+
+     ! Diziler Aslında Object Veri Tipindedir.
+
+     console.log(typeof dizi2); Yazarsak Bunu Konsolda Görebiliriz.
+
+         * FOREACH DÖNGÜSÜ *
+
+     Önceki Notlarda For,While,Do While Döngülerini Yazmıştım. Bunların Bir Arkadaşı Daha Var Bu İse Foreach Döngüsüdür.
+     Foreach Döngüsü Sadece Dizilerde Kullanılır. Dizimiz Varsa Ve Dizinin İçindeki Elemanları Döndürüp Almak İstiyorsak For
+     Falan Da Kullanabiliriz Fakat Foreach Kullanım Kolaylığı Açısından Daha İyidir.
+         * Foreach Kullanımı *
+
+     let isimler =["Buse","Nur","Çetin","Berat"];
+     isimler.forEach(function(isim)){
+        console.log(isim);
+     }
+
+     Şeklinde Foreach Döngüsü Kullanılabilir. Bunu For Döngüsüyle De Yazabiliriz:
+
+     let isimler =["Buse","Nur","Çetin","Berat"];
+     for (let i=0;i<isimler.length;i++){
+        console.log(isimler[i]);
+     }
+
+     While İle De Yapılabilir:
+
+     let sayac=0;
+     while(sayac<isimler.length){
+        console.log(isimler[sayac]);
+        sayac++;   Sayacı Arttırmazsak Sonsuza Kadar Döner Bu Yüzden Arttırmayı Unutmayın.
+     }
+
+     !!! Diziler 0'dan Başlar 1'den Başlarsanız İlk Değeri Kaybedersiniz.
+
+     
 */
