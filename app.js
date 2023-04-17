@@ -1108,6 +1108,7 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
      Önceki Notlarda For,While,Do While Döngülerini Yazmıştım. Bunların Bir Arkadaşı Daha Var Bu İse Foreach Döngüsüdür.
      Foreach Döngüsü Sadece Dizilerde Kullanılır. Dizimiz Varsa Ve Dizinin İçindeki Elemanları Döndürüp Almak İstiyorsak For
      Falan Da Kullanabiliriz Fakat Foreach Kullanım Kolaylığı Açısından Daha İyidir.
+     
          * Foreach Kullanımı *
 
      let isimler =["Buse","Nur","Çetin","Berat"];
@@ -1132,5 +1133,176 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
      !!! Diziler 0'dan Başlar 1'den Başlarsanız İlk Değeri Kaybedersiniz.
 
+
+          * Dizi Metotları *
+
+     Push= Dizinin Sonuna Eleman Ekler, Ayrıca Dizinin Uzunluğunu Döner.
+     Unshift= Dizinin Başına Eleman Ekler, Eleman Sayısını Geriye Döner.
+
+     Pop= Dizinin Sonundan Eleman Siler.Eleman Sayını Döner.
+     Shift= Dizinin Başından Eleman Siler. Eleman Sayını Döner.
+
+     Splice(Index,Incdex)= Eleman Eklemek Ve Silmek İçin Kullanılır.
+
+     toString= Diziyi Stringe Çevirir.
+     Join= Diziyi Stringe Çevirir. Farkı İse Araya Eleman Ekleyebilmemizdir.
+
+     Concat= Dizileri Birleştirmek İçin Kullanılır.
+     Slice(Dilimlemek)= Diziyi İstenilen Yerden Bölüp Yeni Dizi Oluşturur.
+     Length= Dizinin Uzunluğunu Verir.
+     Reverse= Orjinal Dizinin Elamanlarını Ters Çevirir.
+     Split(Bölmek)= Belirli Bir İfadeye Bölüp Diziye Çevirmek.
+     indexOf= Dizideki Elemanın İndex Numarasını Verir.
+     Includes= Dizi Verilen Elemanı İçeriyor Mu Ona Bakar.
+
+     ! Ayrıca Sadece Tooltipleri Okuyarak Tüm Bu Dizilerin Ne İşe Yaradıklarını Görebilirsiniz.
+
+
+     ? Push Metot 
+
+     let arabalar= ["Ford","Mercedes","TOGG","Toyota"];
+     console.log(arabalar.length)
+     let diziUzunluk= arabalar.push("Şahin");
+     console.log(diziUzunluk);
+
+     ? Unshift Metot
+
+     arabalar.unshift("Toros");
+     console.log(arabalar);
+
+     ? Pop Metot
+
+     let silinen=arabalar.pop();
+     console.log(arabalar);
+     console.log(silinen);
+
+     ? Shift Metot
+
+     arabalar.shift();
+     console.log(arabalar);
+
+     ? Splice Metot
+
+     Splice İle De Hem Ekleyip Hem Sileriz. Aradaki Fark Splice İle Sadece Başa Sona Değil İstediğimiz Yere Ekleme Çıkarma Yapabiliriz.
+
+     console.log(arabalar)
+     arabalar.splice(0,0,"Tofaş");
+     console.log(arabalar);
+
+     arabalar.splice(1,2);
+     console.log(arabalar);
+
+     arabalar.splice(2,2,"Porsche");
+     console.log(arabalar);
+
+     ? toString Metot
+
+     console.log(typeof arabalar);
+     let stringArabalar=arabalar.toString();
+     console.log(typeof arabalar);
+     console.log(stringArabalar);
+
+     ? Join Metot
+
+     let stringArabalar=arabalar.join(".");
+     console.log(stringArabalar);
+
+     ? Concat Metot
+
+     let arabalar1=["TOGG","Mercedes","BMW"];
+     let arabalar2=["Tofaş","Şahin","Toyota"];
+
+     let birles= arabalar1.concat(arabalar2);
+     console.log(birles);
+
+     ? Slice(Dilimlemek) Metot
+
+     let arabalar=["TOGG","Mercedes","BMW","Tofaş","Şahin","Toyota"];
+
+     console.log(arabalar);
+     let ayri=arabalar.slice(2);
+     console.log(ayri);
+
+
+     ? Length Özelliği (Metot Değil Özellik)
+
+     console.log(arabalar.length);
+
+     ? Reverse Metot
+
+     console.log(arabalar);
+     arabalar.reverse();
+     console.log(arabalar);
+
+     ? Split Metot
+
+     let isimler=["Buse","Nur","Berat","Çetin"];
+
+     let isimlerDizi= isimler.split(",");
+     console.log(typeof isimlerDizi);
+
+     ? indexOf Metot
+
+     let index= arabalar.indexOf("bmw1");
+     if (index==0){
+        console.log("Belirtilen Eleman Vardır.");
+     }else{
+        console.log("Belirtilen Eleman Yoktur");
+     }
      
+
+     ? Includes Metot
+
+     let sonuc = arabalar.includes("BMW");
+     console.log(sonuc);
+
+          * Örnek *
+
+     Elimizde birkaç tane ürün olsun kullanıcıdan prompt metotuyla hangi ürünü istediğini sorup elimizde
+     kaç tane varsa sayısını konsola yazdıralım.
+
+     let urun1={
+        isim: "ACER Bilgisayar",
+        kategori: "Teknoloji",
+        fiyat= 12.342
+     }
+     let urun2={
+        isim: "Macbook Bilgisayar",
+        kategori: "Teknoloji",
+        fiyat= 23.431
+     }
+     let urun3={
+        isim: "Lenova Bilgisayar",
+        kategori: "Teknoloji",
+        fiyat= 12.321
+     }
+     let urun4={
+        isim: "Excalibur Bilgisayar",
+        kategori: "Teknoloji",
+        fiyat= 23.423
+     }
+
+     let urunler=[urun1,urun2,urun3,urun4];
+
+     let KullaniciUrunIsmı = prompt("Bir Ürün İsmi Giriniz...");
+
+     FiltreliUrunlerDoldur(urunler);
+     FiltreliUrunleriYazdir(urunler);
+
+     function FiltreliUrunlerDoldur(urunler){
+         urunler.forEach(function(urun){
+        if(urun.isim.toUpperCase().includes(KullaniciUrunIsmı.toUpperCase(),0)){
+            filtreliUrunler.push(urun);
+        }
+     });
+     }
+
+     function FiltreliUrunleriYazdir(urunler){
+        urunler.forEach(function(urun){
+            console.log("--------------------------");
+            console.log("|"+urub.isim+"|"+urun.fiyat+"|"+urun.kategori);
+            console.log("--------------------------");
+        });
+     }
+   
 */
