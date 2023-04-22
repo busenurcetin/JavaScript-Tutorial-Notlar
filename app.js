@@ -1492,9 +1492,169 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
    if (rafKod!=null){
     raftaGoster(rafKod);
+    raftaOlustur();
 
     }else{
       alert("Girdiğiniz kitap kütüphanemizde bulunmamaktadır.")
     }
+
+
+      * String Sınıfının Metotları *
+
+     * charAt()
+     * concat()
+     * indexOf()
+     * lastindexof()
+     * toUpperCase()
+     * toLowerCase()
+     * trim()
+     * slice()
+     * substring()
+     * replace()
+     * split()
+     * valueOf()
+     * startsWith()
+     * endsWith()
+     
+     charAt() Kullanımı:
+     let kurs ="JavaScript Öğren"
+     let index= kurs.charAt(4);  Yazıdaki 4. karakteri yani harf/rakamı alır.
+     console.log(karakter);
+
+     concat Kullanımı:
+     String Birleştirmek İçin Kullanılır.
+     let sonuc = kurs.concat(tarih);
+     console.log(sonuc);
+
+     indexOf Kullanımı:
+     charAt() indexi verip karakteri buluyorken indexof karakteri alıp indexi bulur.
+     let index = kurs.indexOf("J");
+     console.log(index);
+
+     lastIndexOf Kullanımı: 
+     Vermiş Olduğumuz Kelimenin Index'ini Yakalamamızı Sağlar.
+     let index = kurs.lastIndexOf("Kursu");
+     console.log(index);
+
+     toUpperCase Kullanımı:
+     Tüm karakterleri büyük harfe dönüştürür. Orjinalini bozmuyor,kopyasını alıp büyük harfe çeviriyor.
+     let sonuc = kurs.toUpperCase();
+     console.log(sonuc);
+
+     toLowerCase Kullanımı:
+     Tüm karakterleri küçük harfe dönüştürür.
+     let sonuc = kurs.toLowerCase();
+     console.log(sonuc);
+
+     Trim Kullanımı:
+     Örneğin kullanıcıdan kullanıcı adı aldık, bu metot kullanıcı, adını boşluklu gönderse bile boşluğu silmeye yarar.
+     console.log(kurs.trim());
+
+     Slice Kullanımı:
+     Bu metotlar dilimlemek için kullanılıyor.
+     console.log(kurs);
+     console.log(kurs.slice(7,10)); 7. Index'ten Başla 10'a Kadar Al, 10 Dahil Değil.
+
+     Substring Kullanımı:
+     Slice gibidir farkı ise eksi değerleri alabilmesidir.
+     console.log(kurs);
+     console.log(kurs.substring(0,6));
+
+     Replace Kullanımı:
+     Örneğin JavaScript Öğren Yerine JavaScript Kursu Yazmak İstiyoruz.
+     console.log(kurs);
+     console.log(kurs.replace("Öğren","Kursu"));
+     Değiştirmek İstediğiniz Kelime Ve Neyle Değiştirmek İstediğinizi Yukarıdaki Gibi Yazıyorsunuz.
+
+     Split Kullanımı:
+     Dizide İstedğimiz Bir Bölümden İstediğimiz Bölüme Kadar Olan Kısmı Ayırıp Dİzi Şekline Getirmeye Yarar.
+     console.log(kurs);
+     let dizi= kurs.split(" ");
+     console.log(dizi);
+
+     valueOf Kullanımı
+     console.log(kurs.valueOf());
+
+     startsWith Kullanımı:
+     Bir Değer Verip O Değerle Başlayıp Başlamadığını Kontrol Edebiliriz.
+     console.log(kurs);
+     console.log(kurs.startsWith("M"));  M İle Başlamadığı İçin False Dönecek
+
+     endsWith Kullanımı:
+     Sonu Şununla Mı Bitiyor. Her İkisinde De Harf De Kelime De Verebilir.
+     console.log(kurs);
+     console.log(kurs.endsWith("Modern"));
+  
+         * Math (Matematik) Objesi Metotları
+
+     * Floor
+     * Ceil
+     * Round
+     * Max
+     * Min
+     * Random
+     * Abs
+     * Sqrt
+     * Pow
+     -----> PI Sayısı
+
+     Math Sınıfı Da Aslında Window Objesi İçinde Tanımlanmış Bir Objedir.
+
+     1 - Floor
+     Noktadan sonrasını atarak tam sayı değeri verir.
+     let a =3.15
+     console.log(Math.floor(a));
+
+     2 - Ceil
+     Floor'a bir benzer metot da ceil metotu. Noktadan sonrasına bakmaksızın sayıyı bir üst sayıya yuvarlıyor.
+     console.log(Math.ceil(a));
+
+     3 - Round
+     Round ise en yakın olana yuvarlar.
+     console.log(Math.round(a));
+
+     4 - Max
+     Number tipinde bir dizi alır, geriye yine number olarak döner.
+     console.log(Math.max(1,2,3,4,50));
+     Buradaki en büyük değer olan 50'yi döner.
+
+     5 - Min
+     Number tipinde bir dizi alır, geriye yine number olarak döner.
+     console.log(Math.min(1,2,3,4,50));
+     Buradaki en büyük değer olan 1'i döner.
+
+     6 - Abs 
+     Bir sayının mutlak değerini almak için kullanılır.
+     let b = -12;
+     console.log(Math.abs(b));
+
+     7 - Sqrt
+     Bir sayının karekökünü almak için kullanılır.
+     console.log(Math.sqrt(169));
+
+     8 - Pow
+     Bir sayının üssünü almak için kullanılır.
+     console.log(Math.pow(2,4)); şeklinde kullanılır 4 tane ikinin çarpımını sonuç olarak verir.
+
+     9 - PI Sayısı
+     console.log(Math.PI);
+
+     10 - Random
+     Random metotu rastgele değerler üretmek için kullandığımız bir metottur. Çok sık kullanılır. 0 ve 1 arasında rastgele değerler üretir.
+     console.log(Math.random());
+     Rastgele sayılar oluşturduktan sonra noktadan sonrasından kurtulmak için aşağıdaki gibi yaparız:
+     console.log(Math.floor(Math.random()*100));
+
+     Bunu parçalı olarak yazmak istersek şu şekilde yazabiliriz:
+     let randomDeger = Math.random();
+     let sonuc = randomDeger*100;
+     let yuvarla = Math.floor(sonuc);
+     console.log(randomDeger);
+     console.log(sonuc);
+     console.log(yuvarla);
+
+
+
+ 
 
 */
