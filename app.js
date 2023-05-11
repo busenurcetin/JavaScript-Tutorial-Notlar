@@ -1601,16 +1601,16 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
      Math Sınıfı Da Aslında Window Objesi İçinde Tanımlanmış Bir Objedir.
 
      1 - Floor
-     Noktadan sonrasını atarak tam sayı değeri verir.
+     Noktadan sonrasını atarak tam sayı değeri verir. Yani 3.99 yazsanız bile çıktı 3 olur.
      let a =3.15
      console.log(Math.floor(a));
 
      2 - Ceil
-     Floor'a bir benzer metot da ceil metotu. Noktadan sonrasına bakmaksızın sayıyı bir üst sayıya yuvarlıyor.
+     Floor'a bir benzer metot da ceil metotu. Noktadan sonrasına bakmaksızın sayıyı bir üst sayıya yuvarlıyor. Yani 3.01 yapsanız da 3.99 yapsanız da 4'e yuvarlar.
      console.log(Math.ceil(a));
 
      3 - Round
-     Round ise en yakın olana yuvarlar.
+     Round ise en yakın olan değere yuvarlar. 3.11 yazarsanız 3'e, 3.99 yazarsanız 4'e yuvarlar.
      console.log(Math.round(a));
 
      4 - Max
@@ -1638,20 +1638,170 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
      9 - PI Sayısı
      console.log(Math.PI);
+     PI bir metot değil bir property(özellik)tir.
 
      10 - Random
      Random metotu rastgele değerler üretmek için kullandığımız bir metottur. Çok sık kullanılır. 0 ve 1 arasında rastgele değerler üretir.
      console.log(Math.random());
      Rastgele sayılar oluşturduktan sonra noktadan sonrasından kurtulmak için aşağıdaki gibi yaparız:
      console.log(Math.floor(Math.random()*100));
+     Kod en dıştan içe doğru okunduğu için bu şekilde yazarız.
 
      Bunu parçalı olarak yazmak istersek şu şekilde yazabiliriz:
+
      let randomDeger = Math.random();
      let sonuc = randomDeger*100;
      let yuvarla = Math.floor(sonuc);
+
      console.log(randomDeger);
      console.log(sonuc);
      console.log(yuvarla);
+
+          * Date (Tarih) Metotları
+
+     Date tarih işlemleri yaptığımız bir objedir ve içince birçok metot vardır. Bu da window objesi içerisinde tanımlanmış bir objedir.
+     Tarih nasıl oluşturulur sorusu ile başlayalım. Yeni bir date objesi oluşturmak için new keywordunu kullanmamız gerekiyor. Date'in birçok farklı kullanımı vardır.
+
+     Bir tarih oluşturuyorsunuz ve get diyerek ayını gününü dakikasını saniyesini alabiliyorken set diyerek de bu değerleri dilediğiniz gibi değiştirebiliyorsunuz.
+
+     console.log(typeof tarih); yazarsak bunun bir obje olduğunu görürüz.
+
+     tarih.toString(); derseniz bunun tipini string'e değiştirebilirsiniz.
+
+     Tarihi ya let tarih = new Date(); şeklinde ya da yılını ayını gününü saatini dakikasını saniyesini vererek let tarih = new Date(1999,03,07,10,40,30); şeklinde oluşturabilirsiniz.
+
+     let tarih = new Date();
+     console.log(tarih);
+
+     Yazarsanız şuanda tarih neyse onu görürsünüz.
+
+     Tarih objesinin içerisine girdiğinizde get ve set metotlarını görürsünüz.
+
+     Get Metotları:
+
+     console.log(tarih.getTime()); yazarsanız da zamanı number tipinde konsola görebilirsiniz.
+
+     console.log(tarih.getFullYear()); yazarsanız size içinde bulunduğunuz yılı döner.
+
+     console.log(tarih.getDate()); yazarsanız günü konsol da görebilirsiniz. Bu metot tarihin gününü gösterir.
+
+     console.log(tarih.getDay()); yazarsanız da haftanın gününü alır yani Pazartesi günü bunu yazarsanız konsol çıktısı 1 olur.
+
+     console.log(tarih.getHours()); yazarsanız saati alırsınız.
+
+     console.log(tarih.getMilliseconds()); yazarsanız milisaniyeyi gösterir.
+
+     console.log(tarih.getMinutes()); yazarak da dakikayı alabilirsiniz.
+
+     Yeniden hatırlatmak istiyorum. Bunların her birinin birer metot olduğunu unutmayın.
+
+     Bunları bir veri güncellendi ne zaman güncellendi, kişi sisteme kayıt oldu ne zaman kayıt oldu gibi kontrolleri sağlamak için sıkça kullanacaksınız.
+
+     console.log(tarih.getMonth()); yazarsanız içinde bulunduğunuz ayı verir fakat aylar sıfırdan başlar buna dikkat edin yani 9 verirse bu Ekim'e denk gelir. Aylar 0-11 arasında değer verir. Eğer bu sizin kafanızı karıştırıyorsa:
+     console.log(tarih.getMonth()+1); yazarak gerçek ayı alabilirsiniz.
+
+     console.log(tarih.getSeconds()); yazarak saniyeyi alabilirsiniz.
+
+     console.log(tarih.toLocalDateString()); yazarsanız tarihi gün ay yıl şeklinde alabilirsiniz.
+
+     console.log(tarih.toLocalTimeString()); yazarsanız tarihi saat dakika saniye şeklinde alabilirsiniz.
+
+     console.log(tarih.toLocalString()); yazarsanız da tarih(gün/ay/yıl) ve saat(saat/dakika/saniye) ikisini birlikte alabilirsiniz.
+
+     Set Metotları:
+
+     Set metotlarını yeni değerler vermek için kullanırız. Örneğin tarihi aldınız fakat 2 gün sonrasını göstermek istiyorsunuz:
+
+     tarih.setData(24);
+     console.log(tarih);
+
+     Yazarsak tarihin gününü 24 olarak değiştirmiş oluruz.
+
+     tarih.setHours(15); yazarsak saati değiştirmiş ve 15 olarak göstermiş oluruz.
+
+     tarih.setMonth(11); yazarsak ayı değiştirmiş oluruz.
+
+     tarih.setMinutes(50); yazarsak dakikayı değiştirmiş oluruz.
+
+     tarih.setHours(tarih.getHours()+2);  yazarsak şuanki saatin üzerine 2 saat eklemiş oluruz. Aynı şekilde şuanki saat üzerinden dakika ve şuanki ay üzerinden ay da değiştirebilirsiniz.
+
+         * Değer Ve Referans Tipleri
+
+     Bir değer bir de referans tipi adında 2 tane değişkenimiz var. Bir değişkeni oluşturduğumuzda bu değişken değer tipinde de olabilir referans tipinde de olabilir.
+     Değer tipinde dediğimiz değişkenler aslında ilkel (primitive) veri tipleridir. String, number, boolean, undefined, null, symbol gibi veri tipleri ilkel(primitive) referans tipindedir.
+
+     let isim ="Buse Nur";
+     console.log(typeof isim); yazarsak bunun string veri tipinde yani ilkel (primitive) bir veri tipi olduğunu görürüz. Bunlar değer tipindedir.
+
+     Referans tipleri ise ilkel olmayan tiplerdir. Object, array, function referans tipindedirler. İlkel değildirler.
+
+     let dizi = [1,5,8,3]; yazarsak bu ilkel değil referans türündedir
+
+     Peki değer ve referans tipi arasındaki fark nedir?
+
+     Ram bellekte S ve H adında iki değişken vardır. Değişken değerlerimiz ram belleğin stack adlı bölümünde tutulur ama dizi oluştursaydık bu dizi ram belleğin hip bölümünde tutulacaktı.
+     Stack bölümünde değer tipler, hip bölümünde referans tipler tutulur.
+
+     Değer Tipleri Örnek:
+
+     let a = 7;
+     let b = a;
+
+     console.log("a :" + a);
+     console.log("b :" + b);
+
+     console.log("----------------");
+
+     b=10;
+     console.log("a :"+ a);
+     console.log("b :"+ b);
+
+     Gördüğünüz gibi b'de değişiklik yapmamıza rağmen bu değişiklik a'yı etkilemiyor. Değer tiplerinde b'de yaptığımız hiçbir değişiklik a'yı etkilemezken referans tiplerinde böyle değildir.
+
+     Referans Tipleri Örnek:
+
+     let dizi1 = [1,2,3];
+     let dizi2 = [1,2,3];
+
+     if(dizi1==dizi2){
+        console.log("Eşittir.");
+     } else{
+        console.log("Eşit Değildir.")
+     }
+
+     //console.log(dizi1);
+     //console.log(dizi2);
+
+     Bu şekilde yazarsak konsolda çıkan çıktı "Eşit değildir." olarak çıkacaktır.
+     Bunların eşit olmasına rağmen eşit değildir çıkmasının sebebi, referans tipinde olduklarından ram bellekte adreslerinin farklı olmasıdır. Dizi1 ve Dizi2 objelerinin referansı hip bölgesinde farklı adresler gösterir.
+     Burda yazdığımız kontrol sistemine göre aslında değerlerinin değil referans adreslerinin eşit olup olmadığına bakıyoruz. Referanslar tiplerde değer bazlı değil referans bazlı işler.
+
+     let dizi1 = [1,2,3];
+     let dizi2 = [dizi1];
+
+     if(dizi1==dizi2){
+        console.log("Eşittir.");
+     } else{
+        console.log("Eşit Değildir.")
+     }
+
+     Şeklinde yazarsak dizi2 dizi1'in adresine bakacağı için konsolda "Eşittir."'i görebiliriz.
+
+     let dizi1 = [1,2,3];
+     let dizi2 = [dizi1];
+
+     dizi2.push(12); dizi2'ye 12'yi ekliyoruz.
+
+     console.log(dizi1) yazdırdığımızda değişikliği dizi2'de yapmış olmamıza rağmen 12 dizi1'de de gözükür. Dizi2 ve dizi1 aynı yere baktığı aynı adresten değer aldığı için birinde yapılan değişiklik diğerinde de gözükür.
+     Genel olarak değer ve referans tipi arasındaki temel fark budur.
+
+     
+
+
+
+
+
+
 
 
 
