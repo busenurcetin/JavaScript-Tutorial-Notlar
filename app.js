@@ -1664,66 +1664,66 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
      Bir tarih oluşturuyorsunuz ve get diyerek ayını gününü dakikasını saniyesini alabiliyorken set diyerek de bu değerleri dilediğiniz gibi değiştirebiliyorsunuz.
 
-     console.log(typeof tarih); yazarsak bunun bir obje olduğunu görürüz.
+     * console.log(typeof tarih); yazarsak bunun bir obje olduğunu görürüz.
 
-     tarih.toString(); derseniz bunun tipini string'e değiştirebilirsiniz.
+     * tarih.toString(); derseniz bunun tipini string'e değiştirebilirsiniz.
 
-     Tarihi ya let tarih = new Date(); şeklinde ya da yılını ayını gününü saatini dakikasını saniyesini vererek let tarih = new Date(1999,03,07,10,40,30); şeklinde oluşturabilirsiniz.
+     * Tarihi ya let tarih = new Date(); şeklinde ya da yılını ayını gününü saatini dakikasını saniyesini vererek let tarih = new Date(1999,03,07,10,40,30); şeklinde oluşturabilirsiniz.
 
-     let tarih = new Date();
-     console.log(tarih);
+     * let tarih = new Date();
+     * console.log(tarih);
 
      Yazarsanız şuanda tarih neyse onu görürsünüz.
 
      Tarih objesinin içerisine girdiğinizde get ve set metotlarını görürsünüz.
 
-     Get Metotları:
+     * Get Metotları:
 
-     console.log(tarih.getTime()); yazarsanız da zamanı number tipinde konsola görebilirsiniz.
+     * console.log(tarih.getTime()); yazarsanız da zamanı number tipinde konsola görebilirsiniz.
 
-     console.log(tarih.getFullYear()); yazarsanız size içinde bulunduğunuz yılı döner.
+     * console.log(tarih.getFullYear()); yazarsanız size içinde bulunduğunuz yılı döner.
 
-     console.log(tarih.getDate()); yazarsanız günü konsol da görebilirsiniz. Bu metot tarihin gününü gösterir.
+     * console.log(tarih.getDate()); yazarsanız günü konsol da görebilirsiniz. Bu metot tarihin gününü gösterir.
 
-     console.log(tarih.getDay()); yazarsanız da haftanın gününü alır yani Pazartesi günü bunu yazarsanız konsol çıktısı 1 olur.
+     * console.log(tarih.getDay()); yazarsanız da haftanın gününü alır yani Pazartesi günü bunu yazarsanız konsol çıktısı 1 olur.
 
-     console.log(tarih.getHours()); yazarsanız saati alırsınız.
+     * console.log(tarih.getHours()); yazarsanız saati alırsınız.
 
-     console.log(tarih.getMilliseconds()); yazarsanız milisaniyeyi gösterir.
+     * console.log(tarih.getMilliseconds()); yazarsanız milisaniyeyi gösterir.
 
-     console.log(tarih.getMinutes()); yazarak da dakikayı alabilirsiniz.
+     * console.log(tarih.getMinutes()); yazarak da dakikayı alabilirsiniz.
 
-     Yeniden hatırlatmak istiyorum. Bunların her birinin birer metot olduğunu unutmayın.
+     * Yeniden hatırlatmak istiyorum. Bunların her birinin birer metot olduğunu unutmayın.
 
-     Bunları bir veri güncellendi ne zaman güncellendi, kişi sisteme kayıt oldu ne zaman kayıt oldu gibi kontrolleri sağlamak için sıkça kullanacaksınız.
+     * Bunları bir veri güncellendi ne zaman güncellendi, kişi sisteme kayıt oldu ne zaman kayıt oldu gibi kontrolleri sağlamak için sıkça kullanacaksınız.
 
-     console.log(tarih.getMonth()); yazarsanız içinde bulunduğunuz ayı verir fakat aylar sıfırdan başlar buna dikkat edin yani 9 verirse bu Ekim'e denk gelir. Aylar 0-11 arasında değer verir. Eğer bu sizin kafanızı karıştırıyorsa:
-     console.log(tarih.getMonth()+1); yazarak gerçek ayı alabilirsiniz.
+     * console.log(tarih.getMonth()); yazarsanız içinde bulunduğunuz ayı verir fakat aylar sıfırdan başlar buna dikkat edin yani 9 verirse bu Ekim'e denk gelir. Aylar 0-11 arasında değer verir. Eğer bu sizin kafanızı karıştırıyorsa:
+     * console.log(tarih.getMonth()+1); yazarak gerçek ayı alabilirsiniz.
 
-     console.log(tarih.getSeconds()); yazarak saniyeyi alabilirsiniz.
+     * console.log(tarih.getSeconds()); yazarak saniyeyi alabilirsiniz.
 
-     console.log(tarih.toLocalDateString()); yazarsanız tarihi gün ay yıl şeklinde alabilirsiniz.
+     * console.log(tarih.toLocalDateString()); yazarsanız tarihi gün ay yıl şeklinde alabilirsiniz.
 
-     console.log(tarih.toLocalTimeString()); yazarsanız tarihi saat dakika saniye şeklinde alabilirsiniz.
+     * console.log(tarih.toLocalTimeString()); yazarsanız tarihi saat dakika saniye şeklinde alabilirsiniz.
 
-     console.log(tarih.toLocalString()); yazarsanız da tarih(gün/ay/yıl) ve saat(saat/dakika/saniye) ikisini birlikte alabilirsiniz.
+     * console.log(tarih.toLocalString()); yazarsanız da tarih(gün/ay/yıl) ve saat(saat/dakika/saniye) ikisini birlikte alabilirsiniz.
 
-     Set Metotları:
+     * Set Metotları:
 
-     Set metotlarını yeni değerler vermek için kullanırız. Örneğin tarihi aldınız fakat 2 gün sonrasını göstermek istiyorsunuz:
+     * Set metotlarını yeni değerler vermek için kullanırız. Örneğin tarihi aldınız fakat 2 gün sonrasını göstermek istiyorsunuz:
 
-     tarih.setData(24);
-     console.log(tarih);
+     * tarih.setData(24);
+     * console.log(tarih);
 
-     Yazarsak tarihin gününü 24 olarak değiştirmiş oluruz.
+     * Yazarsak tarihin gününü 24 olarak değiştirmiş oluruz.
 
-     tarih.setHours(15); yazarsak saati değiştirmiş ve 15 olarak göstermiş oluruz.
+     * tarih.setHours(15); yazarsak saati değiştirmiş ve 15 olarak göstermiş oluruz.
 
-     tarih.setMonth(11); yazarsak ayı değiştirmiş oluruz.
+     * tarih.setMonth(11); yazarsak ayı değiştirmiş oluruz.
 
-     tarih.setMinutes(50); yazarsak dakikayı değiştirmiş oluruz.
+     * tarih.setMinutes(50); yazarsak dakikayı değiştirmiş oluruz.
 
-     tarih.setHours(tarih.getHours()+2);  yazarsak şuanki saatin üzerine 2 saat eklemiş oluruz. Aynı şekilde şuanki saat üzerinden dakika ve şuanki ay üzerinden ay da değiştirebilirsiniz.
+     * tarih.setHours(tarih.getHours()+2);  yazarsak şuanki saatin üzerine 2 saat eklemiş oluruz. Aynı şekilde şuanki saat üzerinden dakika ve şuanki ay üzerinden ay da değiştirebilirsiniz.
 
          * Değer Ve Referans Tipleri
 
@@ -1794,6 +1794,297 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
      console.log(dizi1) yazdırdığımızda değişikliği dizi2'de yapmış olmamıza rağmen 12 dizi1'de de gözükür. Dizi2 ve dizi1 aynı yere baktığı aynı adresten değer aldığı için birinde yapılan değişiklik diğerinde de gözükür.
      Genel olarak değer ve referans tipi arasındaki temel fark budur.
+
+
+         * DOM (Document Object Model) Nedir?
+
+     DOM HTML dökümanları içerisinde bulunan nesnelere kolaylıkla erişim sağlamak ve üzerinde işlmeler yapabilmek için tasarlanan bir modeldir. DOM ile HTML dosyanızda bulunan her şeye erişim sağlayabiliriz.
+     Dinamik olarak o HTML sayfasında değişiklik yapmamızı sağlar. W3 Schools Document Modeline bir göz atmanızı tavsiye ederim.
+
+         * Document Objesi
+
+     Document objesi Window objesi içinde tanımlanmış bir objedir. Çok büyük bir objedir içinde birçok özellik barındırır. Aynı zamanda sayfanızın tamamı document objesi içindedir.
+     Bir matruşka örneği verelim. Widnow objesi en büyük matruşka, document onun bir küçüğü, HTML'de onun bir küçüğü gibidir. Document objesi içinden her şeye erişilebilir.
+
+     console.log(window); yazarsanız Document objesinin Window içinde olduğunu görebilirsiniz.
+
+     Location Özelliği:
+
+     let value;
+     console.log(document.location)
+     value= document.location.href;  yazarsanız hangi adres üzerinde çalıştığınızı konsola yazdırır. 127.0.0.1:5500 gibi.
+     value= document.location.hostname;  yazarsanız hangi localhostta çalıştığınızı gösterir. 127.0.0.1 gibi.
+     value= document.location.port;  yazarsanız hangi port üzerinde çalıştığınızı konsolda görebilirsiniz. 5500 gibi.
+     value= document.location.pathname;  yazarsanız hangi klasörün içinde ne isimli dosyada çalıştığınızı konsolda görebilirsiniz.
+     console.log(value);
+
+
+     Charset Özelliği
+
+     let value;
+     console.log(document)
+     value= document.characterSet; yazarsanız sayfanın hangi dil koduyla çalıştığını konsolda görebilirsiniz. UTF-8 gibi.
+     console.log(value);
+
+
+     Title Özelliği
+
+     let value;
+     console.log(document)
+     value= document.title; yazarsanız üzerinde çalıştığınız projenin başlığını konsolda görebilirsiniz.
+     console.log(value);
+
+     Link Ve İtem Özelliği
+
+     let value;
+     console.log(document)
+     value= document.links;  yazarsanız sayfadaki a etiketlerini alabilirsiniz.
+     value= document.links[4];  yazarsanız 4. indexteki link konsolunuzda görebilirsiniz.
+     value= document.links.item(4).id;  yazarak da 4. indexteki linkin ID'sini konsola yazdırabilirsiniz.
+     value= document.links.item(4).getAttribute("id");  yazarak da ID'yi konsolda görebiliriz.
+     value= document.links.item(4).getAttribute("class");  yazarak da 4. indexteki linkin hangi class'a sahip olduğunu konsola yazdırabiliriz.
+     value= document.links.item(4).classList;  yazarak da elementin kaç tane class'a sahip olduğunu ve classların hangi index numarasına sahip olduğunu görebiliriz.
+     value= document.links.item(4).classList[3];  yazarak da class listesinin 3. indexindeki class'ı konsola yazdırabilirsiniz.
+     value= document.forms;  yazarak sayfadaki formları konsolda görebiliriz.
+     value= document.forms.item(1);  yazarak 1. indexteki formu konsola yazdırabiliriz.
+     value= document.forms.item(1).id;  yazarak index numarası 1 olan formun ID'sini konsola yazdırabiliriz.
+
+     console.log(value);
+
+     Domain Özelliği
+
+     let value;
+     console.log(document)
+     value= document.domain; yazarsanız host adresinizi görebilirsiniz.
+     console.log(value);
+
+     ContentType Özelliği
+
+     let value;
+     console.log(document)
+     value= document.contentType; yazarsanız sayfanın içeriğinin tipini görebilirsiniz. Text/html gibi.
+     console.log(value);
+
+     * Document objesi kullanarak oluşturduğum basit todo list örneğine bakmayı ve aynısını pratik yapmak için yapmaya çalışmayı unutmayın. document-todolist adlı HTML ve JS dosyası
+     bu örnek için oluşturulmuştur. İlerleyen zamanlarda çalışan, çok daha iyi gözüken, dinamik bir todo list yapacağız.
+
+
+         * Selectors (Seçiciler) - Style Özellikleri
+
+     JavaScript'te 3 şekilde seçebiliyoruz. Birisi ID birisi classname birisi tag name. 
+
+     Aynı class ismini birçok yerde tanımlayabilirsiniz ama ID'ler unique olmalıdır. Aynı ID'yi başka bir elemenda tanımlamayın.
+
+     getElementById : ID'ye göre elementi yakalar.
+     getElementByClassName: Class ismine göre yakalar.
+     getElementByTagName: Etiket ismine göre yakalar.
+
+
+     getElementsById Örnekler:
+
+     let value;
+     value= document.getElementsById("todoAddButton"); Bunun anlamı dökümanımın içinde ID'si todoAddButton olan elementi bana getir ve konsolda göster demektir.
+     console.log(value);
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     console.log(button.id);  Yazarak da butonun ID'sini konsola yazdırabiliriz.
+
+     Bir elementin içindeki class type name attribute olarak geçer.
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     console.log(button.getAttribute());  Yazarak todoAddButton ID'sine sahip elementin class isim ID gibi değerlerini alabiliriz.
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     console.log(button.getAttribute("id"));  Yazarak da elementin ID'sini alabiliriz.
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     console.log(button.className);  Yazarak butonun class ismini konsola yazdırabiliriz.
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     console.log(button.getAttribute("class"));  Yazarak butonun class ismini yine konsola yazdırabiliriz.
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     const classListesi = button.classList;
+     console.log(classListesi);  Yazarak seçtiğimiz elemanın classlarını liste şeklinde konsola yazdırabiliriz.
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     const classListesi = button.classList[3];  Yazarak 3. indexteki class'ı konsolda görebiliriz.
+     console.log(classListesi);
+
+     const button = document.getElementsById("todoAddButton");
+     console.log(button);
+     const classListesi = button.classList;
+     classListesi.forEach(function(className){
+        console.log(className);
+     }  Yazarak classlar üzerinde dönebiliriz.
+     console.log(classListesi);
+
+     let buttonText= button.textContent;  Yazarak yakalamış olduğumuz elementin içindeki textleri alabiliriz.
+     let buttonText2= button.innerHTML;  textContent ile aynı işi yapar.
+     console.log(buttonText);
+     console.log(buttonText2);
+
+     textContent ve innerHTML arasındaki fark şudur:
+
+     button.textContent= "<b> Todo Ekleyin </b>" Yazdırırsanız b etiketlerini textContent string olarak algılar.
+     button.innnerHTML= "<b> Todo Ekleyin </b>"  Yazdırırsanız b etiketini olması gerektiği gibi kalın yazdırma işlevini vererek kullanır. 
+     Yani kısaca innerHTML, HTMl etiketlerini algılayabiliyorken textContent algılayamaz.
+
+
+     getElementsByClassName Örnekler:
+
+     const todolist= document.getElementsByClassName("list-group-item");  Class ismi list-group-item olan elemanları yakaladık.
+     console.log(todolist);  Bu class ismine sahip tüm elemanları bunu kullanarak konsolda görebiliriz.
+
+     const todolist= Array.from(document.getElementsByClassName("list-group-item"));
+     todolist.forEach(function(todo){
+        console.log(todo);  Yazarak da bu class ismine sahip her bir elementin üzerinde dönebiliriz.
+     })
+     console.log(todolist);
+
+     const todolist= Array.from(document.getElementsByClassName("list-group-item"));
+     todolist.forEach(function(todo){
+        console.log(todo.className);  Yazarak bu class ismine sahip her bir elementin class ismi üzerinde dönebiliriz. Aynı şekilde ID'leri, textContent'leri de yazdırabiliriz.
+     })
+
+     getElementsByTagName Örnekler:
+
+     const forms = document.getElementsByTagName("form");  Yazarak form tagına sahip tüm elementleri konsola yazdırabilirsiniz.
+     console.log(forms); 
+
+     const forms = document.getElementsByTagName("form");  Yazarak 0. indexteki forma erişebilirsiniz.
+     console.log(forms[0]); 
+
+     const forms = document.getElementsByTagName("form");  Yazarak 0. indexteki formun ID'sine erişebilirsiniz.
+     console.log(forms[0].id);
+
+     const forms= Array.from(document.getElementsByTagName("form"));
+     forms.forEach(function(form){
+        console.log(form);   Yazarak her bir formun üzerinde tek tek dönebiliriz. Array kullanmamızın sebebi kullanmadığımızda hata almamız.
+     })
+
+     const todolist= document.getElementByTagName("li");  Yazarak li etiketine sahip elementleri konsolda görebiliriz.
+     console.log(todolist);
+
+     Şuana kadar getElementById -  getElementByClassName - getElementByTagName metotlarını kullandık ve kullanımını öğrendik. Bu 3'ünü de yaptıran metotlar vardır.
+     Bu metotlar querySelector ve querySelectorAll metotlarıdır.
+
+          * querySelector - querySelectorAll
+
+     const clearButton= document.querySelector(#todobutton);  Yazdığımızda ID'si todobutton olan elementi konsolda görebiliriz. Bu seçim ID seçicisi getElementById ile de yapılabilir.
+     console.log(clearButton);
+
+     const todoList= document.querySelector(".list-group");  Bu seferde class ismi list-group olan elemnterli konsolda görebiliriz. CSS'teki gibi class için "." ID i.in "#".
+     console.log(todoList);
+
+     const todoList= document.querySelector(".list-group-item");  Şeklinde yazarsak bu class ismine sahip 4 eleman olsa bile sadece 1 tanesi konsolda gözükür. 
+     Aynı elemandan 1'den fazla varsa querySelector değil querySelectorAll kullanırız. Class'ı 1 kez kullandıysanız querySelector kullanabilirsiniz fakat birden fazla kez kullanılan class için querySelectorAll seçerek hepsini görebilirsiniz.
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll(".list-group-item");  list-group-item class'ından birden fazla varsa hepsini konsolda görebilirsiniz.
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll(".list-group-item")[2]; 2. indexe sahip list-group-item class elementi konsola gelir.  
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll(".list-group-item")[document.querySelectorAll(".list-group-item").length-1];  Diyelim ki kaç tane bu class'a sahip element olduğunu bilmiyorsunuz ve sonuncusunu almak istiyorsunuz. Bunu yazarak bu class'a sahip sonuncu elemanı konsolda görebilirsiniz.
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll("li:first-child");  Yazarak li'lerin ilk çocuğunu yani ilk li'yi konsola yazdırırsınız. 
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll("li:last-child");  Yazarak li'lerin son çocuğunu yani son li'yi konsola yazdırırsınız. 
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll("li:nth-child(2)");  Yazarak li'lerin ikinci olanını seçer ve konsola yazdırırsınız. Burada index muhabbeti yok. Sayma sayıları şeklinde ilerler.
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll("li:nth-child(odd)");  Yazarsanız tekleri seçer yani 1-3-5-7-9. li'leri konsola yazdırırsınız.
+     console.log(todoList);
+
+     const todoList= document.querySelectorAll("li:nth-child(even)");  Yazarsanız çiftleri seçer yani 2-4-6-8. li'leri konsola yazdırırsınız.
+     console.log(todoList);
+
+     const todoList= Array.from(document.querySelectorAll("li:nth-child(even)"));
+     todoList.forEach(function(todo){
+       todo.style.backgroundColor= "lightgrey";  Yazarak çift sayıya sahip tüm li elementlerinin arkaplan rengini açık gri yapabilirsiniz.
+     })
+
+     Özet olarak anlatmak gerekirse JavaScript'te elementleri 3 şekilde seçebiliriz. Ya ID'sine göre ya classına göre ya da tag name'ine göre seçim yapabiliriz.
+     Fakat bunlardan çok bunların hepsini yapabilen querySelector ve querySelectorAll metotlarını kullanırız. querySelector kullanırken ID ile seçim yapmak için "#"
+     Class ile seçim yapmak için "." etiket ile seçim yapmak içinse direkt yazarak seçimi yapıyoruz. Dikkat etmeniz gereken şey şu eğer seçeceğiniz element class ise ve
+     birden fazla yerde kullanılmış ise tüm elementerli seçebilmek için querySelectorAll kullanmanız gerekiyor. CSS Selectors konusunu hatırlamıyorsanız tekrar etmenizi tavsiye ederim.
+
+         * Style Özelliği Ve Kullanımı
+
+     const todo= document.querySelectorAll(.list-group-item)[0];
+     const todoList = document.querySelector(.list-group);
+     const Button = document.querySelector(#Button);
+
+     todo.style.color= "red"; 0. indexteki list-group-item classına sahip elementin yazısının rengi kırmızı olur.
+     todo.style.color= "#fff"; 0. indexteki list-group-item classına sahip elementin yazısının rengi beyaz olur.
+
+     Bunları ezberlemenize gerek yok her bir HTML elementinin style diye bir objesi var ve bu objeyi kullanarak çeşitli yazıların, arkaplanın vs renklerini ve özelliklerini değiştirebilirsiniz.
+     W3 Schools gibi sitelerden bu özelliklerin tamamına bakabileceğiniz için diğerleri gibi bunları da ezberlemenize gerek yok.
+
+     todo.style.backgroundColor= "pink";  Yazarsak seçili elementin arkaplan rengi pembe olur.
+
+     todo.style.fontWeight= "bold";  Yazarak seçili elementin yazısını bold yani kalın yapabilirsiniz.
+
+     İki kelimeden oluşsan CSS özelliklerinde ikinci kelime her zaman büyük yazılır.
+
+     todo.style.paddingTop="5rem";  Yazarsanız seçili elemente üstten 5rem boşluk bırakırsınız
+
+     todoList.style.marginTop= "10px"; Yazarsanız seçili elemente üstten 10px boşluk bırakırsınız.
+
+     todoList.style.marginLeft= "20px" Şeklinde yazarsanız da soldan 20px boşluk bırakabilirsiniz.
+
+     Button.style.backgroundColor= "green";  Yazarak butona yeşil arkaplan rengi verebilirsiniz.
+
+     Button.style.fontWeight= "bold";  Yazarak buton içindeki yazıları bold(kalın) yapabilirsiniz.
+
+     Button.style.padding="10px";  Yazarak butona 4 bir yandan 10px'lik boşluk vererek daha geniş gözükmesini sağlayabiliriz.
+
+     Button.style.borderRadius="25px";  Yazarak butonun kenarlarına 25px'lik bir yuvarlaklık verebiliriz.
+
+     Bu özellikleri kullanarak dinamik olarak sayfamızda değişiklikler yapabiliriz. Bunlar ve bunlar gibi birçok style özelliği vardır. CSS içinde
+     yapabileceğiniz herhangi bir değişikliği style özelliği kullanarak da yapabilirsiniz. Bu özellikler size yeterli gelmediyse veyda hala meraklıysanız 
+     W3 Schools'un websitesine göz atarak tüm özellikleri görebilirsiniz.
+
+         * HTML Elementleri Üzerinde Gezinmek
+
+     HTML'in bir anne olduğunu varsayalım bu annenin head ve body adında iki çocuğu vardır. Head'in title ve script adında iki çocuğu varken body'nin h1, p ve img gibi yüzlerce çocuğu vardır.
+     h1, p, img ve body'nin içindeki diğer tüm elementler kardeştir. Aynı şekilde title ve script'te kardeştir. Body ve head HTML'nin çocukları olduğu için ikisi de kardeştir. Bir kardeşler, bir
+     anneler, bir de çocuklar vardır. Bu örneği daha iyi anlayabilmek için document-todolist.html'e bakmayı unutmayın. Bunların arasındaki ilişkiyi şu şekilde gösterebiliriz :
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+     
+
+
+
+
 
      
 
