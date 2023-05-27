@@ -2064,6 +2064,750 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
      h1, p, img ve body'nin içindeki diğer tüm elementler kardeştir. Aynı şekilde title ve script'te kardeştir. Body ve head HTML'nin çocukları olduğu için ikisi de kardeştir. Bir kardeşler, bir
      anneler, bir de çocuklar vardır. Bu örneği daha iyi anlayabilmek için document-todolist.html'e bakmayı unutmayın. Bunların arasındaki ilişkiyi şu şekilde gösterebiliriz :
 
+     Bu Örnekleri daha iyi anlamak için ToDo projesine bakarak okuyunuz.
+
+     const todo = document.querySelector(".list-group-item");
+     const todoList = document.querySelector(".list-group");
+
+     conts card = document.gelElementByClassName("card"); böyle ya da;
+     const card = document.querySelector(".card"); böyle card elementini seçebilirsiniz
+     console.log(card); value kullanırsanız her seferinde console log tanımlamak zorunda kalmazsınız.
+
+     const row = document.querySelector(".row");
+
+     let value;
+
+      * Anneden Çocuklara Erişmek *
+
+     value= todoList;
+     value= todoList.children; 
+
+     Sadecde 0. indexteki çocuğu yakalamak istiyorsak:
+
+     value= todoList;
+     value= todoList.children[0]; 
+
+     Sadece 1. indexteki çocuğu yakalayalım:
+
+     value= todoList.children[1]; 
+
+     Son çocuğu yakalamak için şu kod bloğu kullanılabilir:
+
+     value= todoList.children[todoList.children.length-1]; 
+
+     Son çocuğu yakalayıp içindeki yazısını da değiştirebiliriz.
+
+     value= todoList.children[3].textContent = "Değişti"; 
+
+     Tüm ToDo elemanlarının üzerinde dönmek istiyorsak:
+
+     value = Array.from(todoList.children); yazarız.
+
+     value.forEach(function(todo){
+        console.log(todo.textContent);
+     })  yazarak da her bir textContent ögesi üzerinde dönebiliriz.
+
+     value=todo;
+     console.log(value);
+
+     * Çocuktan Anneye Erişmek *
+
+     value = todo;
+     value = todo.parentElement; yazarak todo'nun annesine erişilebilir.
+     value = todo.parentElement.parentElement;  yazarak todonun annesinin de annesine erişilebilir. 
+     value = todo.parentElement.parentElement.parentElement;  yazarak da onun da annesine gidilebilir. Sürekli parentElement yazmak yerine;
+     value = value.parentElement;  yazarak da yukarıdakilerin annesine ulaşılabilir.
+
+     Her birini ayrı ayrı da yazdırabilirsiniz:
+
+     value todo;
+
+     let ul = todo.parentElement;
+     let cardBody = ul.parentElement; gibi.
+     let cardElement = cardBody.parentElement; 
+     let row = cardElement.parentElement;
+     console.log(cardBody);
+
+       * Kardeşler Arasında Gezinmek *
+
+     value = todo;
+     value = todo.nextElementSibling;  Sibling kardeş demek next element sibling ise bir sonraki kardeş demektir.
+     value = todo.nextElementSibling.nextElementSibling;  dersek onun üzerinden de bir sonraki kardeşe gidebiliriz.
+     value = todo.nextElementSibling.nextElementSibling.nextElementSibling;  yaparsak başka bir kardeş olmadığından null verir.
+     console.log(value);
+
+          * Son Çocuğu Yakalamak İçin *
+
+     const todoLastChild = document.querySelector(".list-group-item:nth-child(4)"); yazarız. Sonrasında console.log(todoLastChild); yazarsak başarılı bir şekilde yazdığımızı görebiliriz.
+     value = todoLastChild;
+     value = todoLastChild.previousElementSibling; yazarsak son çocuktan bir önceki elemente gider.
+     console.log(value);
+
+      * Belirli Bir Elementi Yakalamak *
+
+     Todo List yazısını değiştirmeye çalışacağız. Row'u yukarıda tanımladık.
+
+     value= row.children[0].children[3].children[0].textContent ="Başlık Değişti";
+
+     Pratik yapmak isterseniz seçtiğiniz bir yazıyı değiştirmeye çalışın. Yukarıdan aşağıya gelerek ya içinceki yazıyı ya yazı rengini ya da arkaplan rengini değiştirin.
+
+     Şimdi de Todo 3 yazan yerin yazısını ve arkaplan rengini değiştirelim:
+
+     let todo3 = row.children[0].children[3].children[2].children[2];
+     todo3.textContent="Değişti.";
+     todo3.style.backgroundColor="gray";
+
+     console.log(value);
+
+     * Dinamik Olarak Element Oluşturmak *
+
+     Bu kısmı da daha iyi anlamak için todolistproje.html'e bakmayı unutmayın.
+
+       const cardBody = document.querySelectorAll(".card-body")[1];
+       const todoList = document.querySelector(".list-group");
+
+       Document sınıfımızın objesiiçerisinde createElement adında bir metot var. Bunu kullanarak element oluşturacağız.
+
+       const link = document.createElement("a");
+
+       Bu elemente ID vermek istersek:
+
+       linkID="blogWebsite"; şeklinde verebiliriz.
+
+       Bu elemente class vermek istersek:
+
+       link.className="btn btn-dark":
+
+       Bu elemente href yani yönlendirme vermek istersek:
+
+       link.href="https://buse.com"; 
+
+       Bu elemente target vermek istersek de:
+
+       link.target="_blank":
+
+       Bu elementin içine yazı yazmak istersek:
+
+       link.innerHTML="Buton";  yazabiliriz.
+
+       console.log(link); yazarak da elementi konsolda tüm özellikleriyle görebiliriz.
+
+       Bu elementi sayfaya yerleştirmek için ilk önce yukarıda card-body sınıfına sahip elementi seçiyoruz. 
+       querySelectorAll yazmamızın sebebi card-body'den 2 tane olması bu kısmı anlamadıysanız querySelector ve querySelectorAll arasındaki farkı tekrar edin.
+
+       Bu card-body'nin sonuna ekleme yapmak istiyoruz bu yüzden.
+
+       cardBody.appendChild(link); yazarak ekliyoruz. Append Child sonuna ilave et, bu çocukların sonuna bunu da ilave et gibi bir anlama geliyor.
+
+       Bunu da yazdıktan sonra sayfada a elementini görebiliyoruz.
+
+       Başka bir örnek daha yapalım:
+
+       Bu örnekte hem li elementini hem li elementinin içindeki a etiketini hem de i etiketini dolduracağız.
+
+       const todo = document.createElemet("li");
+       const todoLink = document.createElement("a");
+       const i = document.createElement("i");
+
+       todoClassName="list-group-item";
+       todo.innerHTML = "TODO 5";
+       todoLink.href="#";
+       todoLink.className= "delete-item";
+       i.className= "fa fa-remove";
+
+       a etiketinin içerisine i'yi koymak için:
+
+       todoLink.appendChild(i); yazıyoruz.
+       
+       a etiketini li etiketinin içerisine koymak içinse:
+
+       todo.appendChild(todoLink);  yazıyoruz.
+
+       Şimdi bunların hepsi hazır fakta bu li'yi de ul'nin içine eklememiz gerekiyor. Yukarıda tanımlamamızı        const todoList = document.querySelector(".list-group"); olarak yaptık.
+
+       todoList.appendChild(todo);
+
+       yazıp kaydettiğimizde başarılı bir şekilde sayfamızda görebiliriz.
+
+       * Element Silmek *
+
+     Bir element nasıl yakalanıp silinir bunu öğreneceğiz. 2 tane yolu var ikisini de göreceğiz.
+
+     Örneklerle öğreneceğiz Todo 1'i nasıl yakalayıp sileriz bakalım:
+
+     1. Yöntem:
+
+     const todoList = document.querySelector(".list-group");
+     const todos = document.querySelectorAll(".list-group-item");
+
+     todos[0].remove();
+     todos[1].remove();
+     console.log(todos);
+
+     yazarak 0. ve 1. indexteki todo'yu silebilirsiniz.
+
+     Sondaki çocuğu sileceksek:
+
+     const todoList = document.querySelector(".list-group");
+     const todos = document.querySelectorAll(".list-group-item");
+
+     todos[todos.length-1].remove(); yaparak da sondaki çocuğu silebiliriz.
+
+     Ya da:
+     const todoList = document.querySelector(".list-group");
+     const todos = document.querySelectorAll(".list-group-item");
+     const todo1 = document.querySelector(".list-group-item");
+
+     todo1.remove(); yaparak da silebiliriz.
+
+     2. Yöntem:
+
+     Sileceğimiz elementi annesi(ebeveyni) üzerinden de silebiliriz.
+
+     console.log(todos) yaparsanız todo'ların hepsinin NodeList şeklinde olduğunu konsolda görebilirsiniz.
+
+     const todoList = document.querySelector(".list-group");
+     const todos = document.querySelectorAll(".list-group-item");
+     const todo1 = document.querySelector(".list-group-item");
+
+     todoList.removeChild(todos[0]); yazarsanız Todo listesindeki 0. indexteki çocuğu sil demiş olursunuz.
+
+     Ya da:
+
+     let todoq = todos[0];
+     todoList.removeChild(todo1); yazarsanız da aynı işlemi yapmış olursunuz.
+
+     todoList.removeChild(todos[todos.length-1]); yazarsanız da son çocuğu silebilirsiniz. Bunu kullanmak istemezseniz:
+
+     todoList.removeChild(todoList.lastElementChild);  yazarak da sonuncu çocuğu yani son elementi kaldırabilirsiniz.
+
+       * Elementlerin Yerini Değiştirmek *
+
+     replaceChild metodunu kullanarak elementlerin yerini değiştirebiliriz. Yine bir örnek üzerinden öğreneceğiz:
+
+     const cardBody = document.querySelectorAll(".card-body")[1]; Card Body'i yakaladık yeni bir element oluşturalım:
+
+     const newTitle = document.createElement("h2"); bir H2 elementi oluşturduk.
+     newTitle.className="card-title";
+     newTitle.textContent = "Todo Listesi Yeni";
+
+     İlk önce yeni etiketimizi sonrasında değiştirmek istediğimiz etiketi yazıyoruz ama eski etiketi Node tipinde alıyor bu yüzden ilk önce CardBody'nin Node tiplerini görmemiz gerekiyor:
+
+     console.log(cardBody.childNodes);  yazarak cardBody'nin node tiplerini görebiliriz.
+
+     console.log(cardBody.childNodes[1]);  yazarak 1. indexteki node'u yazdırıyoruz.
+
+     cardBody.replaceChild(newTitle,cardBody.childNodes[1]); yazarak da yeni etiketimizle eskisini değiştirebiliriz.
+
+     2. parametreyi yani değiştirilmek istenen elementi her zaman Node tipinde ister buna dikkat edin.
+
+       * Events (Olaylar) Nedir? *
+
+     Türkçe anlamı olaydır. Bir şey tetiklendiğinde meydana gelmesini istediğimiz olayları sağlayan yapılardır şeklinde de söyleyebiliriz.
+     Örneğin bir butona tıklamai butona 2 kez tıklama ya da butonun üzerine gelme, üzerinden çıkma gibi işlemlerin her birine olay diyoruz. Yaygın olarak kullanılan
+     Events etiketlerine web3 schools'tan göz atabilirsiniz fakat hepsine burda da değineceğim. Input events, mouse events, keyboards events, click events, load events gibi birçok event çeşidi vardır.
+
+       * Events (Olaylar) Nasıl Kullanılır?
+
+     Bu kısımdaki örnekleri anlamak için document-todolistproje.html'e bakarak ilerlemeyi unutmayın:
+
+     Örneğin:
+
+     <a href="#" id="todoClearButton" onclick="alert('Merhaba')"  class="btn btn-primary btn-sm mt-3">Tüm Todoları Temizle</a>
+
+     şeklinde bir şey yazarsanız butona tıklandığında merhaba yazısını görürsünüz. alert kullanırken çift değil tek tırnak kullanmaya özen gösterin.
+
+     Başka Bir Örnek:
+
+     <a href="#" id="todoClearButton" onclick="this.textContent = 'Buse'"  class="btn btn-primary btn-sm mt-3">Tüm Todoları Temizle</a>
+
+     Yazarsanız da butona tıklandığında butonun içindeki yazı Buse olarak değişir. Tek tırnak kullanımını unutmayın. this demek bu buton, bu yazı gibi anlamlar taşır.
+
+     Başka Bir Örnek:
+
+     <a href="#" id="todoClearButton" onclick="document.querySelectorAll('card-title')[1].textContent='Değiştirdik"  class="btn btn-primary btn-sm mt-3">Tüm Todoları Temizle</a>
+
+     Yazarsak da card-title class'ına sahip ögenin içindeki yazıyı değiştirmiş oluruz. document.querySelectorAll ile seçtikten sonra 1. indexteki card title'ı textContent kullanarak değiştirme işlemini gerçekleştiririz.
+
+     Bu yöntemi fazla kullanmayacağız çünkü çok fazla JavaScript kodumuz olduğunda bu temiz bir kod yazmamızı engelleyecek bunun yerine:
+
+     index.html'e: <a href="#" id="todoClearButton" onclick="changeTitle()"  class="btn btn-primary btn-sm mt-3">Tüm Todoları Temizle</a>
+     metotunu çalıştırmasını söylüyoruz. Bunu yaptıktan sonra app.js'e:
+
+     function changeTitle(){
+        document.querySelectorAll('card-title')[1].textContent='Değiştirdik";
+     }
+
+     yazıyoruz. Bu şekilde kodumuz hem daha temiz hem de okunabilir oluyor. script src olarak app.js'i projenize dahil etmezseniz bunu kullanamazsınız, unutmayın.
+
+     Bundan daha da kullanışlı bir yöntem daha vardır o da addEventListener'ı kullanmaktır. Örneğin yukarıdaki yöntem yerine bunu kullanmak istersek:
+
+     const clearButton = document.querySelector("#todoClearButton");  ID'si todoClearButton olan elementi seçtik.
+
+     clearButton.addEventListener("click", function(){alert ("Merhaba!");})  addEventListener kullanarak hangi işlem gerçekleştiğinde bunu çalıştırmak istediğimizi belirttik. İlk önce hangi işlemi yapmak istediğimizi sonra metodumuzu yazdık.
+
+     Artık butona bastığımızda Merhaba yazısı çıkıyor.
+
+     Kısaca ekrandaki butonumuzu seçtik addEventListener kullanarak bu butona basıldığında(click) hangi fonksiyonu çalıştırmasını istediğimizi söyledik.
+
+     Bunun yerine daha önce tanımladığımız changeTitle fonksiyonunu addEventListener olarak ekleyip de kullanabiliriz:
+
+     const clearButton = document.querySelector("#todoClearButton"); 
+     clearButton.addEventListener("click", changeTitle);
+
+     Kısaca anlatmak gerekirse butona bir addEventListener ekledik ve click olma durumunda changeTitle metodunu çalıştırmasını söyledik.
+
+     Uyarı: changeTitle() şeklinde parantezli kullanırsanız addEventListener'ı beklemeden değiştirir bu yüzden parantezli kullanmayın.
+
+     Tüm eventleri konsolunuzda görmek için:
+
+     const clearButton = document.querySelector("#todoClearButton"); 
+     clearButton.addEventListener("click", changeTitle);
+
+     function changeTitle(e){
+        console.log(e);
+     }
+
+     Yazabilirsiniz. Daha kolay yöntemleri de tabiki olabilir fakat bu kullanımı öğrenmeniz için bu şekilde bakmanızı tavsiye ederim.
+
+     function changeTitle(e){
+        console.log(e.target);
+     }
+
+     Yazarsanız da bu elemente tıklandığında hangi HTML etiketlerinin kullanıldığını görmemi sağla gibi bir anlamı var. Kısaca HTML elementini döndürür. Daha iyi anlamak için deneyin.
+
+     function changeTitle(e){
+        console.log(e.target.textContent);
+     }
+
+     Yazarsanız dönen HTML elementinin içindeki yazıyı almış olursunuz.
+
+     function changeTitle(e){
+        console.log(e.target.className);
+     }
+
+     Yazarak da istediğiniz herhangi bir elementin(biz burda butonu seçtik) class(sınıf) ismini konsola yazdırabilirsiniz.
+
+     function changeTitle(e){
+        console.log(e.type);
+     }
+
+     Yazarsanız hangi koşulda bu fonksiyonun çalışacağını konsolda görebilirsiniz. Bunu yazdığınızda konsolda click yazacaktır.
+
+
+       * MOUSE (Fare) Events *
+
+     DOMContentLoaded
+     load
+
+     Yukarıdakilerin ikisi de sayfa yüklenmeyle ilgilidir.
+
+     click
+     dblclick
+     mouseover
+     mouseout
+     mouseenter
+     mouseleave
+
+     1) DOMContentLoaded
+
+     document.addEventListener("DOMContentLoaded", run);
+
+     function run{
+        console.log("Sayfa Yüklendi...");
+     }
+
+     Yazarsanız sayfa yüklendiğinde direkt çalışır ve yazıyı size konsolda gösterir. Bunun yerine:
+
+     2) load
+
+     window.addEventListener("load", run);
+
+     function run{
+        console.log("Sayfa Yüklendi...");
+     }
+
+     Yazarak da aynı işlemi yapabilirsiniz. Birinde window birinde document objesi kullandık, dikkat edin.
+
+     3) click
+
+     const cardTitle = document.querySelectoAll("card-title")[1]; yazarak ilk önce card-title'ın 1. indexe sahip elementini seçiyoruz.
+     cardTitle.addEventListener("click", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Yazarsak seçilen butona tıklandığında konsolda ne kullandığımızı görebiliriz. Click kullandığımız için click yazısını göreceğiz.
+
+     4) dblclick
+
+     const cardTitle = document.querySelectorAll("card-title")[1]; yazarak ilk önce card-title'ın 1. indexe sahip elementini seçiyoruz.
+     cardTitle.addEventListener("dblclick", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Yazarsak da sadece çift tıkladığımızda çalışır. İsterseni ayrı ayrı 10 kez basın yine çalışmaz, çift tıklamanız gerekiyor.
+
+     5) mouseover
+
+     const cardTitle = document.querySelector(".card-title")[1];
+     const cardBody = document.querySelectorAll(".card-body")[1];
+
+     cardBody.addEventListener("mouseover", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     cardBody ve içindeki elementler üzerinde gezindiğimiz takdirde mousover çalışmaya devam ediyor.
+
+     6) mouseout
+
+     const cardTitle = document.querySelector(".card-title")[1];
+     const cardBody = document.querySelectorAll(".card-body")[1];
+
+     cardBody.addEventListener("mouseout", run);
+     cardBody.addEventListener("mouseover", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Yazarsanız da cardBody dışına çıktığınızda çalışır. cardBody dışında başka bir elementin üzerine gelirseniz de cardBody'nin dışında çıktığınızdan çalışır.
+     cardBody'nin içine girdiğimizde mouseover dışına çıktığımızda mouseout çalışır. Başka bir elemente geçtiğiniz takdirde ikisi de çalışır.
+
+     7) mouseenter
+
+     const cardTitle = document.querySelector(".card-title")[1];
+     const cardBody = document.querySelectorAll(".card-body")[1];
+
+     cardBody.addEventListener("mouseenter", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Bunu çalıştırdığınızda ise cardBody'nin üzerine geldiğinizde çalışır ama cardBody'nin içindeki elementlerde gezdiğinizde çalışmaz. Daha iyi anlamak için kodu yazıp çalıştırın.
+     mouseover hem cardBody hem de cardBody içindeki HTML elementleri üzerinde gezindiğinizde çalışırken mouseenter sadece cardBody üzerine çalışır ve elementleri görmezden gelir.
+
+     8) mouseleave
+
+     const cardTitle = document.querySelector(".card-title")[1];
+     const cardBody = document.querySelectorAll(".card-body")[1];
+
+     cardBody.addEventListener("mouseleave", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Bunu çalıştırdığınızda cardBody'nin dışına çıkarsanız çalışır. İçindeki HTML etiketlerinde gezinirken çalışmaz.
+
+     Projenin birçok yerinde modifiye edilerek kullanılabilir bu yüzden bunları öğrenmemiz gerek.
+
+
+       * KEYBOARD (Klavye) Events
+
+     keypress  : Harf Ve Sayılarda Tetiklenir.
+     keydown  : Hepsinde Çalışır.
+     keyup  : Tuştan Elini Kaldırdığında Çalışır.
+
+     1) keypress
+
+     Bu sayfa içerisinde (document-todolist.html) klavyede herhangi bir tuşa basıldığında konsolda bir şey yazdırmak istiyorsak:
+
+     document.addEventListener("keypress", run);  Butona basıldığında run metodu çalışacak.
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Bunu yazarak herhangi bir butona basıldığında sayfada hangi addEventListener tipinin kullanıldığını görebilirsiniz. 
+     Tipimiz keypress olduğundan her butona bastığınızda konsolda keypress yazısını göreceksiniz.
+     Basmış olduğumuz tuşu yakalayıp ekranda göstermek istiyorsak:
+
+     document.addEventListener("keypress", run);  Butona basıldığında run metodu çalışacak.
+
+     function run(e){
+        console.log(e.key);
+     }
+
+     Yazarız ve ekrandayken A tuşuna basarsanız konsolda A'yı görebilirsiniz.
+
+     Eğer klavyeden bir tuşa basmak ve bu tuşun ASCII tablosundaki karşılığını görmek istiyorsanız da:
+
+     document.addEventListener("keypress", run);  Butona basıldığında run metodu çalışacak.
+
+     function run(e){
+        console.log(e.keyCode);
+     }
+
+     Yazıp herhangi bir tuşa basarak ASCII tablosundaki karşılığını konsolda görebilirsiniz. keyCode yerine which kullanırsanız da aynı işlemi yapabilirsiniz.
+
+     keypress'in bir dezavantajı vardır o da klavyeden sadece harfleri ve sayıları algılayabilmesidir. keypress sadece harf ve sayılarda tetiklenebilen bir eventtır.
+
+     2) keydown
+
+     document.addEventListener("keydown", run);  Butona basıldığında run metodu çalışacak.
+
+     function run(e){
+        console.log(e.keyCode);
+     }
+
+     keydown keypress'in aynısıdır tek fark keydown'un klavyedeki her şeyi algılayabilmesidir. keypress sadece harf ve sayıları algılayabiliyorken keydown klavye üzerindeki her şeyi algılar.
+
+     3) keyup
+
+     document.addEventListener("keyup", run);  Butona basıldığında run metodu çalışacak.
+
+     function run(e){
+        console.log(e.keyCode);
+     }
+
+     keyup ise tuştan elimizi kaldırdığımızda çalışır. Örneğin ekrana geldiğinizde a tuşuna basılı tutarsanız çalışmaz fakat a tuşundan elinizi çektiğiniz an çalışmaya başlar. keyup'da klavyedeki her şeyi algılar.
+
+     Örneğin kullanıcı klavyeden F5'e bastığında sayfa yenilemeyi engellemek istiyorsak:
+
+     document.addEventListener("keydown", run);  Butona basıldığında run metodu çalışacak.
+
+     function run(e){
+        console.log(e.keyCode);
+        if(e.keyCode==116){   //116 yazmamızın sebebi F5'in ASCII kod tablosunda değerinin 116 olmasıdır.
+            alert("Sayfa Yenileme Engellendi.");
+        }
+
+        e.preventDefault();  yazarak da engelleme işlemimizi tamamlamış oluruz.
+     }
+
+     Başka bir örnek yapalım input'a bir şeyler girelim ve Todo List başlığına girdiğimiz şeyleri direkt yazdırmaya çalışalım:
+
+     const cardTitle = document.querySelectorAll(".card-title")[0];  yazarak 0. indexteki card title sınıfına sahip elementi seçtik.
+
+     cardTitle'ı seçmemiz yeterli değil input'un içine bir şey yazılma durumunu seçmek istediğimizden input'a ulaşmamız gerek:
+
+     const input = document.querySelector("#todoName");  yazarak input'u seçiyoruz.
+
+     input.addEventListener("keyup",run);  yazıyoruz. Dikkat edin document'a değil input'a verdik çünkü input'un durumunu kontrol etmek istiyoruz.
+
+     function run(e){
+        console.log(e.target.value);  yazarak input'un içindeki değeri alıyoruz.
+     }
+
+     Şuan bunu çalıştırırsanız input içine ne girerseniz girin konsolda görebilirsiniz yani input'u konsolda okuma işlemimiz başarılı.
+
+     function run(e){
+        cardTitle.textContent = e.target.value;
+     }
+
+     Yazarsak da amacımıza ulaşmış oluruz. Input'un içine ne yazarsak başlığımız o olur.
+
+      
+      * INPUT Events
+
+     focus
+     blur
+     copy
+     paste
+     cut
+     select
+
+     1) focus
+
+     focus imleci input içerisine bıraktığınızda ve inputa tıkladığınızda çalışan işleme denir.
+
+     Örneklerle kullanabilmek için sayfamızdaki (document-todolist.html) input'u seçelim:
+
+     const todo = document.querySelector(#todoName); yazarak seçelim başarılı bir şekilde seçip seçmediğinizi kontrol etmek için konsola yazdırabilirsiniz.
+
+     todo.addEventListener("focus", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     yazarak focus her çalıştığında konsolda Event Listener tipini yazdırabiliriz.
+
+     2) blur
+
+     blur ise input'tan çıktığınızda çalışır yani focusladınız ve sonra çıktınız bu durumda blur çalışır.
+
+     const todo = document.querySelector(#todoName); yazarak seçelim başarılı bir şekilde seçip seçmediğinizi kontrol etmek için konsola yazdırabilirsiniz.
+
+     todo.addEventListener("blur", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Bunlar gereksiz gibi gözükebilir ama projenin akışına göre kullanabileceğinizi ve işinize yarayabileceğini unutmayın.
+
+     3) copy
+
+     copy adından da anlaşıldığı gibi input'un içindeki bir veriyi kopyalarsanız copy event'inizs çalışır
+
+     const todo = document.querySelector(#todoName); yazarak seçelim başarılı bir şekilde seçip seçmediğinizi kontrol etmek için konsola yazdırabilirsiniz.
+
+     todo.addEventListener("copy", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     Kopyaladığınız, yapıştırdığınız her veri websiteleri tarafından alınabilir bu yüzden girdiğiniz websitelerine neyi kopyalayıp yapıştırdığınıza kadar her şeyde dikkatli olun.
+
+     4) paste
+
+     yine adından da anlayabileceğiniz gibi herhangi bir şeyi yapıştırırsanız konsolda bunu görebilirsiniz.
+
+     const todo = document.querySelector(#todoName); yazarak seçelim başarılı bir şekilde seçip seçmediğinizi kontrol etmek için konsola yazdırabilirsiniz.
+
+     todo.addEventListener("paste", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     5) cut
+
+     yine adından da anlayabileceğiniz gibi herhangi bir şeyi keserseniz konsolda bu işlemi görebilirsiniz.
+
+     const todo = document.querySelector(#todoName); yazarak seçelim başarılı bir şekilde seçip seçmediğinizi kontrol etmek için konsola yazdırabilirsiniz.
+
+     todo.addEventListener("cut", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+     6) select
+
+     adından da anlayabileceğiniz gibi herhangi bir şeyi seçerseniz konsolda bu işlemi görebilirsiniz.
+
+     const todo = document.querySelector(#todoName); yazarak seçelim başarılı bir şekilde seçip seçmediğinizi kontrol etmek için konsola yazdırabilirsiniz.
+
+     todo.addEventListener("select", run);
+
+     function run(e){
+        console.log(e.type);
+     }
+
+       * Session Storage Kullanımı *
+
+     UYARI : Bu kısım biraz uzun olacak o yüzden mola vererek anlayarak ilerlemenizi tavsiye ederim.
+
+     Tarayıcılarımızda 2 storage(depolama) tipi var biri local storage diğeri ise session storage'dir.
+
+     Sayfada inspect(incele) kısmına geldiğimizde application adlı bir bölüm var. Application bölümüne geldikten sonra storage kısmı var. Bu kısımda Session Storage ve Local Storage'i görebilirsiniz.
+     Bunların içine girdiğimizde key ve value mantığı var. İkisinin de kullanmış olduğu metotler, yöntemler her şey tamamen aynı. Session Storage kısmında 1 key'e 1 value mantığı var. Bu tarayıcının depolama
+     alanıdır. Kullanmış olduğunuz browser'ın depolama alanıdır.
+
+     Session Storage ve Local Storage arasındaki fark ise:
+
+     Session Storage'e herhangi bir değer ekledikten sonra tarayıcıyı kapatırsanız ya da başka bir tarayıcıdan açarsanız eklemiş olduğunuz değerler silinirken Local Storage'e eklemiş olduğunuz değerler tarayıcıyı hatta
+     bilgisayarı kapatsanız bile silinmez. İkisi arasındaki en büyük fark bu, başka bir fark yok. Daha çok Local Storage kullanırsınız ama Session Storage kullanacağınız projeler de olabilir.
+
+     Storage verilerimizi depolamak için kullanmış olduğumuz bir hafızadır diyebiliriz.
+
+     console.log(window); yazarsanız Local Storage ve Session Storage'in window objesi içerisinde tanımlanmış olduğunu görürsünüz.
+
+     Direkt window.sessionStorage ya da window.localStorage yazarak erişebilirsiniz.
+
+       * Session Storage - Değer Ekleme *
+
+     sessionStorage.setItem("320", "Buse");  yaparak değer ekleyebiliriz 1 tane key bir tane de value vermemiz gerekiyor.
+     sessionStorage.setItem("193", "Talha");
+     sessionStorage.setItem("219", "Burak");
+
+     Yazarak incele kısmının Application > Session Storage'inden de görebileceğiniz gibi değerleri ekleyebilirsiniz. Fakat Session Storage içinde yazdığımız için tarayıcıyı kapattığımızda hepsi silinecek.
+
+       * Session Storage - Değer Silme *
+
+     sessionStorage.removeItem("320"); yazarak Buse isimli değeri Storage'den silebiliriz.
+
+       * Session Storage - Değer Alma *
+
+     sessionStorage içinden bir değeri alabiliriz:
+
+     let value = sessionStorage.getItem("320");
+     console.log(value); 
+
+     Yazarak değeri alıp konsola yazdırabiliriz. Bunun yerine:
+
+     let value = sessionStorage.getItem("120");
+     console.log(value); 
+
+     Yazsaydık key değeri 120 olan bir şey olmadığı için konsolda null yani boş değeri dönecekti.
+
+       * Session Storage - Hepsini Silme *
+
+     sessionStorage.clear(); Yazarsak da tüm değerleri sileriz.
+
+       * Session Storage - Önemli Kısım *
+
+     sessionStorage.setItem(249, 17);
+
+     Yazarsak ve bunun type'ına bakarsak:
+
+     let value = sessionStorage.getItems(249);
+     console.log(typeof value);
+
+     Bunun tipinin tırnaklar içerisinde yazmadığımız için int değil string olarak alındığını görürüz.
+
+       * Session Storage - Array Yazdırma *
+
+     Örneğin isimlerden oluşan bir array'e sahip olalım:
+
+     let names = ["Buse","Burak","Berat","Talha"];
+
+     sessionStorage.setItem("names", names); ilk yazdığımız "names" değeri key'e eşit. İkinci yazdığımız name değeri ise value'ya eşit olacak.
+
+     let value = sessionStorage.getItem("names");
+     console.log(value);  
+
+     Kodlarını eklersek de key'i names olanların value değerlerini yani array içine yazdığımız tüm isimleri konsolumuzda görebiliriz. Fakat bunun tipine bakarsak:
+
+     console.log(typeof value);
+
+     tipinin array değil string olarak döndüğünü görebiliriz. Bunun tipinin array olarak dönmesini istiyorsak:
+
+     sessionStorage.setItem("names", names);  yerine:
+
+     sessionStorage.setItem("names", JSON.stringify(names));
+     
+     Yazmamız gerekiyor. Böyle yazarsak konsola array şeklinde yazdırmış oluruz.
+
+     Bunun tamamını bir array'miş gibi aldırmak istiyorsak:
+
+     sessionStorage.setItem("names", JSON.stringify(names));
+     let value = JSON.parse(sessionStorage.getItem("names"));
+     console.log(value);
+
+     Yazabiliriz. Daha iyi anlamak için tüm bunları deneyerek öğrenmeyi unutmayın. JSON.stringify metodu arraymiş gibi yazdırmamıza yardımcı olurken JSON.parse metodu ise bunu array'e çevirerek
+     tamamen array gibi konsolda görmemizde yardımcı oldu. JSON.stringify ve JSON.parse metodunu iyi anlayın gerekirse başka kaynak kullanın.
+     JSON.parse kullanmasaydık üzerinde dönemeyecektik. Array gibi görünen string olmaması için JSON.parse kullandık.
+
+     let names = ["Buse","Burak","Berat","Talha"];
+     sessionStorage.setItem("names", JSON.stringify(names));
+
+     let value = JSON.parse(sessionStorage.getItem("names"));
+     value.forEach(function(name){
+        console.log(name);
+     })
+
+     Yazarak da tüm array'deki isimleri konsola yazdırabiliriz. Daha iyi anlamak için kesinlikle deneyin. 
+     Kısaca anlatmam gerekirse:
+     Storage'dan isimleri aldık sonrasında JSON.parse kullanarak bu isimleri array'e çevirdik, array'e çevirmezsek dönemeyiz, sonrasında bu array'i value'ya atadık.
+     value'ya atadığımız değerin üzerinde döndük ve her birini name olarak yakalayıp konsola yazdırdık.
+
+     Eklemiş olduğumuz her şey bunları kullanmadan string tipinde alınır ve döner.
+
+     Son olarak setlerken JSON.stringify kullanıp array'miş gibi setlersiniz, ordaki array'i alırken de JSON.parse kullanarak string'den array'e dönüştürerek alırsınız ve kullanırsınız.
+
+     NOT : Buraya kadar geldiysen helal olsun, disiplinli bir şekilde çalışmaya devam et. JavaScript'in büyük bir kısımını bitirdin. Geriye çok az bir bölüm kaldı. Tebrik ederim.
+
      
 
 
@@ -2075,18 +2819,6 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
 
 
-
-
-
-
-     
-     
-
-
-
-
-
-     
 
 
 
