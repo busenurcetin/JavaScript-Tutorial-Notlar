@@ -2808,7 +2808,36 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
      NOT : Buraya kadar geldiysen helal olsun, disiplinli bir şekilde çalışmaya devam et. JavaScript'in büyük bir kısımını bitirdin. Geriye çok az bir bölüm kaldı. Tebrik ederim.
 
-     
+        * Local Storage Kullanımı *
+
+     Yukarıda bahsedilen fark hariç sessionStorage'dan hiçbir farkı yoktur. Kullanılan metotlar, isimler yukarıdakilerin aynısıdır. Aynı sessionStorgae gibi window objesi içinde tanımlanmıştır.
+     Kullanımı tamamen aynıdır.
+
+       * Local Storage Değer Ekleme *
+
+     localStorage.setItem("motion1", "push-up");
+     localStorage.setItem("motion2", "barfix");
+     localStorage.setItem("motion3", "burpee");
+     localStorage.setItem("motion4", "squat");
+
+       * Local Storage Değer Almak *
+
+     let value = localStorage.getItem("motion1");
+     console.log(value);
+
+     JSON.stringfiy kullanmama sebebimiz bu değerlerin bir array olmamamsı, array kullanmamamız. Array kullansaydık kullanırdık.
+
+       * Local Storage Değer Silmek *
+
+     localStorage.removeItem("motion4");
+
+       * Tümünü Temizle *
+
+     localStorage.clear();
+
+     Bunları öğreniyoruz ama nerede kullanacağız gibi bir soru aklınıza geliyor olabilir.
+
+
 
 
 
