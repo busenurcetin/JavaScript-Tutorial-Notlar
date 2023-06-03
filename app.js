@@ -2835,7 +2835,8 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
      localStorage.clear();
 
-     Bunları öğreniyoruz ama nerede kullanacağız gibi bir soru aklınıza geliyor olabilir.
+     Bu Aşamadan Sonra Todo List Projesi Yaptık. Projeyi Görmek İçin todolistproje.html ve todolistproje.js'e bakmanızı tavsiye ederim.
+     Gerekirse videolardan izleyip ilerleyerek bir TODO List projesi yapın, alıştırma olması için.
 
 
 
