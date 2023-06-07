@@ -2838,6 +2838,14 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
      Bu Aşamadan Sonra Todo List Projesi Yaptık. Projeyi Görmek İçin todolistproje.html ve todolistproje.js'e bakmanızı tavsiye ederim.
      Gerekirse videolardan izleyip ilerleyerek bir TODO List projesi yapın, alıştırma olması için.
 
+        * EcmaScript (ES6) Nedir?
+
+     EcmaScript nedir sorusu hayli kafa karıştıran ve net bir cevabı olmayan bir sorudur. EcmaScript ve JavaScript aynı şeyler değildir.
+     EcmaScript bir standarttır. JavaScript'te bu standarı esas olan bir betik dilidir. Bu size karışık gelebilir. Şöyle düşünün JavaScript bir dil EcmaScript ise
+     bu dil üzerine konulmuş bir standarttır. Standart kelimesini şöyle açıklayabiliriz: Yazdığınız kod tüm tarayıcılarda çalışmayabilir EcmaScript bize yazdığımız kodun
+     tüm tarayıcılarda çalışmasını sağlıyor. Kullanıcı deneyimi açısından çok önemli. Google için farklı kod, Opera için farklı kod, Chrome için farklı kod yazmaktansa EcmaScript
+     kullanmak yeterli oluyor. EcmaScript'in birçok versiyonu vardır. JavaScript'le bir bütün olmuş dildir desek yanlış olmaz. ES6 en önemlisi ve bütün tarayıcıların desteklediği versiyondur.
+
 
 
 
