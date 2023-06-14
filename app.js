@@ -2846,6 +2846,932 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
      tüm tarayıcılarda çalışmasını sağlıyor. Kullanıcı deneyimi açısından çok önemli. Google için farklı kod, Opera için farklı kod, Chrome için farklı kod yazmaktansa EcmaScript
      kullanmak yeterli oluyor. EcmaScript'in birçok versiyonu vardır. JavaScript'le bir bütün olmuş dildir desek yanlış olmaz. ES6 en önemlisi ve bütün tarayıcıların desteklediği versiyondur.
 
+        * Arrow Functions
+
+     ES6 ile beraber önemli bir özelliktir. Önceden bir metot tanımlarken:
+
+     function yazdir(){
+        consolelog("Merhaba");
+     }
+
+     yazdir()
+
+     şeklinde tanımlıyorduk fakat ES6'dan sonra şöyle bir yazım standartı geliştirildi:
+
+     ARROW FUNCTIONS
+
+     const yazdir = ()=>{
+        console.log("Merhaba");
+     }
+
+     yazdir()
+
+     Function keyword'unu kullanmak yerine parantex açıp kapatıp eşittir ve büyüktür ifadelerini yazıyorsunuz.
+     Bu bir metot aslında. fonksyionu alıp yazdir adlı değişkene atıyoruz.Çok da bir fark yok gibi görünse de vardır.
+     Arrow functionlarda isimlendirme yoktur atama operatörü sayesinde değişkeni atar ve kullanırız.
+     Bu fonksiyonu şu şekilde kısaltabiliriz:
+
+     Parametreli Arrow Function
+
+     const yazdir = (firstName)=>{
+        console.log("Merhaba",firstName)
+     }
+
+     yazdir("Buse")
+
+     İkinci Parametreli Arrow Function Örneği:
+
+    const yazdir = (firstName, secondName)=>{
+        console.log("Merhaba",firstName,secondName)
+     }
+
+     yazdir("Buse","Çetin")
+
+     Arrow functionların güzelliği yazdığınız kod satırı tek bir satırdan oluşuyorsa, yani metot içinde yapılan işlem tek bir satırdan
+     oluşuyorsa kıvırcık parantezleri kaldırabilirsiniz:
+
+     const yazdir = (firstName, secondName)=>console.log("Merhaba",firstName,secondName)
+     yazdir("Buse","Çetin")
+
+     Yani tek satırda bir metot tanımı yapmanıza izin verir.
+     Tek satır değil de birden fazla satırdan oluşan kod bloğunuz var ise:
+
+     const yazdir = (firstName, secondName)=>
+     console.log("Merhaba",firstName,secondName)
+     yazdir("Buse","Çetin")
+     let a = 5;
+     console.log(a)
+     console.log("Buse")
+     yazdir("Buse","Çetin")
+
+     Gördüğünüz gibi istediğimiz çıktıyı vermedi çünkü JavaScript'te kodlar yukarıdan aşağıya doğru okunur. Bu yüzden birden fazla kod bloğundan 
+     oluşan bir kod yazacaksanız, kıvırcık parantex kullanın.
+
+     Bunlar birçok JavaScript geliştiricisi tarafından kullanılan özelliklerdir. Bir kodu okuduğunuzda ileride bir şirkette çalışmaya başaldığınızda
+     bunları sık sık kullanacaksınız.
+
+     const yazdir = firstName =>
+        console.log("Merhaba", firstName)
+
+     yazdir("Buse")
+
+     Bir metot, bir arrow function'ın paramteresi tek bir metottan oluşuyorsa oval parantezleri de silebilirsiniz.
+     Bunun anlamı şu burda yazdir adında bir function var ve bu function firstName adında bir paramtere alıyor ve aldığı parametreyi konsola yazdırıyor.
+     Arrow unction birçok yerde kullanılıyor, buna alışın çok karşılaşacağız.
+
+     const kupAl = x =>{
+        return x*x*x
+     }
+
+     console.log = , kupAl(3);
+
+     Burda yaptığımız şey şu:
+
+     kupAl adındaki metodu çağırdık, x = 3 oldu ve 3*3*3 = 27 oldu sonrasında da bu 27'yi return ile metodun çağrıldığı yere gönderip konsola yazdırdık.
+
+       * NOT *
+
+     İşlemimiz tek bir satırdan oluşuyorsa ve return kullanıyorsak hem oval paranteleri hem kıvırcık parantezleri hem de return'ı silebiliriz:
+
+     const kupAl = x => x*x*x
+
+     console.log = , kupAl(3);
+
+     Sadece buralarda değil Call Back Functionlarda da fazlaca kullanılır. Örneğin:
+
+     const kupAl = x => x*x*x
+
+     document.addEventListener("click", function(){
+
+     })
+
+     normalde böyle yazıyorduk fakat arrow function sayesinde şu şekilde yazabiliyoruz:
+
+     document.addEventListener("click", ()=>{
+
+     })
+
+     şeklinde kullanacağız. Gördüğünüz gibi arrow function kodu sadeleştirdiği gibi okumayı da kolaylaştırıyor.
+
+     İlk başlarda kullanımı biraz zorlayabilir fakat kullandıkça ve pratik yaptıkca öğreneceğiz.
+
+     Tanımlanmış olan arrow functionlar bir dğeişkene setlenir ve o değişken üzerinden çağrılır. O yüzden değişken atamalarına dikkat edin.
+
+     console.log = , kupAl(3);
+
+
+        * Destructing Kullanımı *
+
+     ES6 ile gelen özelliklerimizden biridir. Kullanımı:
+
+     let langs = ["JS", "C", "C++", "Python"]
+     let lang 1, lan2, lang3, lang4
+
+     lang1 = langs[0];
+     lang2 = langs[1];
+     lang3 = langs[2];
+     lang4 = langs[3];
+
+     console.log(lang1,lang2,lang3,lang4);
+
+     Burda 1 tane array 4 tane de değişken tanımladık, arrayin her bir indexine değişkenlerimizi atadık ve bunları konsola yazdırdık
+     Index numaralarını kullanarak değişkenleri doldurduk.
+     Normalde bunu böyşe yapıyorduk fakat Destructing sayesinde bu kullanım yerine daha basit bir kullanım kullanabiliriz:
+
+     let langs = ["JS", "C", "C++", "Python"]
+     let lang 1, lan2, lang3, lang4
+
+     [lang1,lang2,lang3,lang4] = langs
+
+     console.log(lang1,lang2,lang3,lang4);
+
+     Burdaki langs'in 0. indexine bakıp bunu setliyor aynı şekilde diğer değişkenler için de aynısını yapıyor. Bunu bu şekilde algılayabilmesi için
+     [] bu parantezleri kullanmamız gerekiyor. Kutu parantez dizinin göstergesidir.
+     Gördüğünüz gibi kodumuz hem daha temiz hem daha okunabilir oldu. Kullanmasanız da olur fakat işinizi kolaylaştırır.
+
+     Bu konuyu daha iyi kavramak için w3schools'tan bakmanızı ve örnekleri denemenizi tavsiye ederim.
+
+     const hesapla = (a,b)=>{
+        const toplam = a+b
+        const cikar = a-b
+        const carp = a*b
+        const bol = a/b
+
+        const dizi = [toplam,cikar,carp,bol]
+        return dizi
+     }
+
+     let[a,b,c,d] = hesapla(18,2)
+
+     console.log(a,b,c,d)
+
+     Başka Bir Örnek
+
+     const person = {
+        firstName : "Buse",
+        lastName : "Cetin",
+        salary : 5000,
+        age : 18,
+     }
+
+     let isim, soyisim, maas, yas
+
+     isim = person.firstName
+     soyisim = person.lastName
+     maas = person.salary
+     yas = person.age
+
+     console.log(isim,soyisim,maas,yas)
+
+     şeklinde yapabiliriz fakat bunun daha kolay bir kullanımı vardır:
+
+     Not: Süslü parantez objeyi kutu parantez diziyi ifade eder.
+
+     const person = {
+        firstName : "Buse",
+        lastName : "Cetin",
+        salary : 5000,
+        age : 18,
+     }
+
+     {let firstName, lastName, salary, age} = person
+
+     console.log(firstName,lastName,salary,age)
+
+     Eğer değişkenleri firstName ya da lastName gibi isimlerle kullanmak istemiyorsanız:
+
+     {let firstName:isim, lastName:soyisim, salary:maas, age:yas} = person
+
+     şeklinde yazarak yeniden adlandırabilirsiniz. Fakat bunu yaptıktan sonra:
+
+     console.log(isim,soyisim,maas,yas)
+
+     Kısmını da yukarıdaki gibi değiştirmeniz gerek.
+
+
+        * Spread Operatötü Kullanımı *
+
+     Spread operatörünün ne işe yaradığını anlamak için önce spread kullanmazsak ne olur bunu bilmemiz gerek.
+
+     let numbers = [10,20,30,40]
+     function add(a,b,c,d){
+        console.log(a+b+c+d)
+     }
+
+     Eski Yöntem:
+
+     add(numbers[0],numbers[1],numbers[2],numbers[3])
+
+
+     Yeni Yöntem:
+
+     add(...numbers)
+
+     Bunun Türkçesi şu : (numbers[0],numbers[1],numbers[2],numbers[3]) = (...numbers)
+
+     3 nokta spread operatörünü gösterir ki zaten spread'in anlamı dilim demektir. Diziyi dilimliyor ve virgüllerle ayırıyor.
+
+     Örnek 2:
+
+     const diller1 : ["JavaScript", "Java"]
+     const diller2 : ["PHP", "Python"]
+
+     eğer diller2, diller1'i de kapsasın isteseydik:
+
+     const diller2 : ["PHP", "Python", diller1[0], diller1[1]]
+     console.log(diller2)
+
+     şeklinde yazacaktık. Bunun yerine daha kolay ve basit bir spread kullanımı da yapabiliriz:
+
+     const diller1 : ["JavaScript", "Java"]
+     const diller2 : ["PHP", "Python", ...diller1]
+     console.log(diller2)
+
+     Örnek 3: Farklı Kullanım
+
+     const numbers = [1,2,3,4,5,6,7,8,9]
+     let [a,b] = numbers
+     console.log(a,b)
+
+     yazarsak konsolumuzda sadece 0 ve 1. indexte olan 1 ve 2 rakamı gözükecektir, diğer rakamları göstermek için yine spread operatöründen faydalanabiliriz.
+
+     const numbers = [1,2,3,4,5,6,7,8,9]
+     let [a,b, ...kalanSayilar] = numbers
+     console.log(a,b, kalanSayilar)
+
+     Yazarsak 1 ve 2 dışında kalan sayıları da konsolda görebiliriz. Yani 0. indexteki sayıyı a'ya, 1. indexteki sayıyı b'ye geri kalan sayıları ise kalanSayilar'a atadık.
+
+
+     Örnek 4 : Arraydeki Değeri Başka Array'e Verme
+
+     const array1 = ["Buse", "Berat","Ali", "Burak"]
+     const array2 = []
+
+     array2[0] = array1[0]
+     array2[1] = array1[1]
+     array2[2] = array1[2]
+     array2[3] = array1[3]
+
+     console.log(array2)
+
+     Normalde yukarıdaki gibi yapıyorduk fakat spread kullanımı sayesinde artık çok daha kolay bir yöntem mevcut:
+
+     const array1 = ["Buse", "Berat","Ali", "Burak"]
+
+
+     const array2 = [...array1]
+     console.log(array2)
+
+     yazarak yukarıda yazdığımız 4 satırlık kod bloğunu tek satıra indirebiliriz.
+
+        * For in - For of Döngüleri
+
+      * For in Kullanımı *
+
+     for in bir dizi üzerinde dönerken o dizinin her bir elemanının indexini verir. for in'i in = index şeklinde aklınızda tutabilirsiniz.
+
+     Normal Fonksiyon:
+
+     let names = ["Buse","Nur","Çetin","Emir","Hilal","Aybars"];
+
+     names.forEach(function(name){
+        console.log(name)
+     })
+
+     Arrow Function:
+
+     let names = ["Buse","Nur","Çetin","Emir","Hilal","Aybars"];
+
+     names.forEach(name=> console.log(name))
+
+     For in kullanırken önce değişkeni tanımlıyoruz sonra let diyoruz ve sonra değişkene isim veriyoruz. 1- Değişken Tanımlama 2- in 3-Dizi İsmi
+
+     let names = ["Buse","Nur","Çetin","Emir","Hilal","Aybars"];
+
+     for(let name in names){
+        console.log(name)
+     }
+
+     Yazarsanız names adlı dizinin her bir elemanının index numarasını görebilirsiniz fakat hangi elemanın hangi index numarasına geldiğini görmek için aşağıdaki yöntemi kulanmalısınız.
+     Değişken ismi verirken anlamlı, konuyla alakalı isim verin ki sizden sonra gelecek olan yazılımcı neyi neden yaptığınızı anlayabilsin.
+
+     for(let name in names){
+        console.log(name, names[name])
+     }
+
+     Yazarak hem index numarasını hem o index numarasına karşılık gelen değeri konsolda görebilirsiniz.
+
+       * For of Döngüsü
+
+     Bir dizi üzerinde for of kullanıldığında direkt değerini verir. Değerinden indexine indexinden de değerine erişilebilir.
+
+     for(let isim of names){
+        console.log(isim)
+     }
+
+     yazarsanız for in'de nasıl index numaralarını görüyorsak for of'da da değerleri yani yazdığımız isimleri görürüz. İndex numarasıyla görmek içinse:
+
+     for(let isim of names){
+        console.log(isim, names.indexOf(isim))
+     }
+
+     şeklinde yazmamız gerekiyor.
+
+
+         * Map Kullanımı *
+
+     Mapler arraylern alternatifidir. Key ve value mantığıyla çalışırlar. MAP = key(anahtar) value(değer) Mapler aynı arrayler gibi bir dizi türüdür.
+
+     let array = [1,2,3] gibi dizileri oluşturuyorduk.
+
+     const map1 = new Map();   new OOP konusu fakat şimdilik bir map oluşturmak için kullandığımız anahtar kelime olarak bilmeniz yeterli.
+
+       * Set *
+
+     Map'in içerisine değer koymak için set metotu kullanılır. Map'in keyine de values'suna da istediğiniz değeri verebilirsiniz. İster string ister obje.
+
+     const map1 = new Map();
+     map1.set(1,"Buse")
+     map1.set(true,5)
+     map1.set([1,2,3], {firstName: "Buse", lastName: "Çetin"})
+     map1.set(true, "5")
+
+     map1.set(16,"Bursa")
+     map1.set(34,"İstanbul")
+     map1.set(35,"İzmir")
+     map1.set(06,"Ankara")
+
+     Plakası 6 olanın değerini konsolda görmek istiyorsak get metodunu kullanırız.
+
+       * GET *
+
+     console.log(map1.get(6))
+     console.log(map1.get(06))
+     console.log(map1.get(35))
+
+     Yazarak plakaların içindeki değeri konsola yazdırabilirsiniz.
+
+       * Size *
+
+     Map'İn içinde ne kadar değer olduğu bilgisini size metotunu kullanarak alabiliriz.
+
+     let value;
+     map1.set(16,"Bursa")
+     map1.set(34,"İstanbul")
+     map1.set(35,"İzmir")
+     map1.set(06,"Ankara")
+
+     value= map1.size;      NOT: size bir property olduğu için size() olarak değil size olarak yazdık.
+     console.log(value);
+
+       * Delete *
+
+     Delete metotunu kullanarak mapin içinden değer silebiliriz.
+
+     let value;
+     map1.set(16,"Bursa")
+     map1.set(34,"İstanbul")
+     map1.set(35,"İzmir")
+     map1.set(06,"Ankara")
+
+     value = map1.delete(06)
+     console.log(value);
+     console.log(map1.size)
+
+     Yazarsak Ankara silinir. Konsolda silindiği için true görürsünüz. console.log(map1.size) yazma amacımız ise silindiğini içinde kaç değer olduğuna bakarak kontrol etmemiz.
+
+       * HAS *
+
+     Map'in içinde bir değer var mı diye sorgulama yapmamıza yarayan metottur. Bu map'in içinde yüzlerce değer olabilirdi plakası 16 olan değer var mı diye bakmak isteseydik bu metotu kullanacaktık.
+
+     console.log(map1.has(16))
+
+     yazarsak ve konsolda true değerini görürsek bunun anlamı map'in içinde 16 plakalı değerimiz var demektir. Sahip olunmayan bir plaka girerseniz false değerini göreceksiniz.
+
+       * For Of Map Üzerinde Döndürme *
+
+     Hangi keyin hangi value'ya denk geldiğini, tüm key ve value'ları görmek için kullanabiliriz.
+
+     for (let [key, value] of map1){
+        console.log(key,value)
+     }
+
+     Yukarıda aslında destructing kullandık.
+
+     Destructing öğrenirken:
+
+     let array = [34, 'İstanbul'];
+     let [a,b] = array;
+     console.log(a,b)
+
+     yazarak yukarıda yaptığımız işlemin aynısını yapıyorduk. Bu işlemle yukarıdaki işlem arasında hiçbir fark yok yine elimizde bir dizi ve bir array var ve yine içerisinde 2 değer var ve bu değerler yazdırılıyor.
+
+       * Keys *
+
+     Map'in içerisinde keys adında bir metot var ve bu metot key'leri bize geri döndürüyor.
+
+     const keys = map1.keys();
+     console.log(keys)
+
+     Fakat bu keyler üzerinde forEach döngüsüyle dönemezsiniz. Ufak bir örnek yapalım:
+
+     const keys = map1.keys();
+     console.log(keys)
+     keys.forEach((key)=>{console.log(key)})  yazarsanız konsolda hata alırsınız. Çünkü bu bir map, array değil. Array'e çevirmek için:
+
+     const keys = Array.from(map1.keys())
+     console.log(keys)
+
+     keys.forEach((key)=>{console.log(key)})
+
+     yazarak konsolda forEach kullanımınızı görebilirsiniz. Value ve keyi birlikte yazdırmak istiyorsak:
+
+     const keys = Array.from(map1.keys())
+
+     keys.forEach(key)=> {
+        console.log(ey,map1.get(key))
+     }
+
+     Map'in içinden keyleri değil sadece değerleri almak istiyorsak ya da değerleri değil sadece keyleri almak istiyorsak aşağıdaki kullanımı yapabiliriz:
+
+     Keyleri Almak İçin:
+
+     for(let key of map1.keys()){
+        console.log(key)
+     }
+
+     Value'ları Almak İçin:
+
+     for(let value of map1.values()){
+        console.log(value)
+     }
+
+       * Map'ten Array'e Çevirmek *
+
+     Elimizde bir map varsa ve bunu array'e çevirmek istiyorsak kullanırız.
+
+     const arry = Array.from(map1);
+     console.log(array)
+
+     Bu array'in keylerini ve value'larını ufak bir kod bloğuyla istediğimiz zaman yazdırabiliriz:
+
+     const array2 = [
+        [16, "Bursa"],
+        [34, "İstanbul"],
+        [35, "İzmir"],
+        [06, "Ankara"]
+     ]
+
+     const array = Array.from(map1);
+
+     array.forEach((value)=>{
+        console.log(value[0])
+     })
+
+     yazarsak keyleri görürüz index numarasına 1 verirsek de sadece value'ları konsolda görebiliriz.
+
+       * Array'i Map'e Çevirmek *
+
+     Bir map'i nasıl array'e çevirebiliyorsak array'i de map'e çevirebiliriz.
+
+     const array2 = [
+        [16, "Bursa"],
+        [34, "İstanbul"],
+        [35, "İzmir"],
+        [06, "Ankara"]
+     ]
+
+     const myMap = new Map(array2);
+     console.log(myMap)
+
+     Önemli NOT:
+
+     map1.set(16,"Bursa")
+     map1.set(34,"İstanbul")
+     map1.set(35,"İzmir")
+     map1.set(06,"Ankara")
+
+     console.log(map1.get(6)) yaptığımızda Ankara geliyordu fakat aşağıdaki gibi bir kullanım söz konusu değil.
+
+     map1.set([1,2,3], "Array")
+     console.log(map1.get([1,2,3]))
+
+     bunu yaparsanız hiçbir şey gelmez çünkü tanımladığımız tipler primitive tiplerken tanımladığımız dizi referans tiplidir. Primitive ve referans
+     tipleri çalıştığımız zamanları hatırlarsanız ikisi de farklı yere baktığı için birbirlerini bulamazlar bu yüzden konsolda undefined ifadesini görürüz.
+     Fakat bu şekilde kullanabilirsiniz:
+
+     let key = [1,2,3]
+
+     map1.set(16,"Bursa")
+     map1.set(34,"İstanbul")
+     map1.set(35,"İzmir")
+     map1.set(06,"Ankara")
+     map1.set(key, "Array")
+
+     console.log(map1.get(key))
+
+     Bunu bulabilme sebebi diziyi let ifadesiyle tanımlamamız. Primitive tiplerde tipine bakarken referans tiplerde referansına bakar.
+ 
+       * SET Kullanımı *
+
+     Set'ler de Map'ler gibi dizilerin alternatifi olan bir dizi çeşitidir. 
+     Set'lerin farkı : Set'lerin içerisine koyduğumuz değerler sadece 1 kez tutuluyor. Birden fazla kez aynı değeri tutamıyorsunuz. Map'te kullanılan metotlara ve kullanım şekline kadar her şey tamamen aynı.
+     Tek farkı 1 değeri yalnızca 1 kere tutabilmemiz. Set'lerde key-value mantığı yoktur. Aşağıdaki örneğe bakarsanız daha iyi anlayabilirsiniz.
+
+       * Add Metodu *
+     const set = new Set();
+     set.add(true)
+     set.add(3.14)
+     set.add("Buse")
+     set.add("Buse")
+     set.add("Buse")
+     set.add(7)
+     set.add({username:"buse" , passwrord : "0"});
+     set.add([1,2,3,4])
+
+     Dizimizin içine değerlerimizi koyduk. NOT: Set'in de bir dizi olduğunu unutmayın.
+
+     console.log(set.size)  yazarek set'in içinde kaç değer tuttuğunu görebilirsiniz. Gördüğünüz gibi Buse'yi 3 kez yazmamıza rağmen sadece 1'ini aldı. Bunun nedeni set'lerin 1 değeri yalnızca 1 kez yazdırmasıdır.
+
+       * Delete Metodu *
+     
+     Set dizisinin içindeki herhangi bir değeri ya da değerleri silmek için kullanırız.
+
+     const set = new Set();
+     set.add(true)
+     set.add(3.14)
+     set.add("Buse")
+     set.add("Buse")
+     set.add("Buse")
+     set.add(7)
+     set.add({username:"buse" , passwrord : "0"});
+     set.add([1,2,3,4])
+
+     set.delete(true)
+     console.log(set.size)
+
+       * Has *
+
+     İstediğimiz değerin var olup olmadığını sorgulamak için kullanırız.
+
+     const set = new Set();
+     set.add(true)
+     set.add(3.14)
+     set.add("Buse")
+     set.add("Buse")
+     set.add("Buse")
+     set.add(7)
+     set.add({username:"buse" , passwrord : "0"});
+     set.add([1,2,3,4])
+
+     console.log(set.has("Buse"))
+
+       * For Of Dönüsüyle Set Üzerinde Dönme *
+
+     Set dizisi içerisinde dönmek için kullanılır.
+
+     const set = new Set();
+     set.add(true)
+     set.add(3.14)
+     set.add("Buse")
+     set.add("Buse")
+     set.add("Buse")
+     set.add(7)
+     set.add({username:"buse" , passwrord : "0"});
+     set.add([1,2,3,4])
+
+     for(let value of set){
+        console.log(value)
+     }
+
+       * Set'i Array'e Çevirmek *
+
+     const set = new Set();
+     set.add(true)
+     set.add(3.14)
+     set.add("Buse")
+     set.add("Buse")
+     set.add("Buse")
+     set.add(7)
+     set.add({username:"buse" , passwrord : "0"});
+     set.add([1,2,3,4])
+
+     const values = Array.from(set);
+     console.log(values)
+
+     Farklı Yöntem:
+
+     const values = Array.from(set);
+     values.forEach((value)=>{
+        console.log(value)
+     })
+
+       * Array'den Set Oluşturmak *
+
+     let array = [1, "Buse", true, "Berat", 15, [1,2,3]]
+
+     const newSet = new Set(array);
+     console.log(newSet)
+
+
+       * Template Literals *
+
+     String'leri birleştirmek için eskiden + operatörü kullanılırdı bu da hayli zordu. Templae Literals ES6 ile birlikte gelen ve
+     stringleri birleştirme konusunda işimizi hayli kolaylaştırn bir özelliktir.
+
+     function write(firstName, lastName){
+        console.log("İsim :" +firstName + " "+ "Soyisim :"+ lastName)
+     }
+     write("Buse Nur", "Çetin")
+
+     Burda 2 tane parametre verdik ve verdiğimiz parametreleri konsola yazdırdık. İki tane string'i birleştirebilmek için + operatörünü kullandık.
+     Template Literals'tan önce string birleştirme bu şekilde yapılıyordu.
+
+       * Template Literals Kullanımı *
+
+     ALT GR + İki Kez Noktalı Virgül Tuşu İle Tek Tırnak Yapabilirsiniz.
+
+     function write(firstName, lastName){
+        console.log(`İsim: ${firstName} Soyisim: ${lastName}`)
+     }
+     write("Buse Nur", "Çetin")
+
+     Yazarak da aynı sonucu çok daha kısa bir kullanımla alabilirsiniz. Tek tırnak koyunca derleyici bunun template literals olduğunu anlıyor,
+     boşlukları algılıyor, dinamik olarak yazdırmak istediğimiz değerleri de dolar süslü parantez(${ }) ile yazdırıyoruz. Statik olarak isim ve oyisim yazdık,
+     dinamik olarak da göndermek istediğimiz firstName ve lastName ifadelerini yazdık.
+
+     Statik : Değişmeyen
+     Dinamik : Değişen
+
+     NOT: Template Literals alt alta yazdırmayı da algılar.
+
+     function write(firstName, lastName){
+        console.log(
+            `
+            İsim: ${firstName} 
+
+            Soyisim: ${lastName}
+            `
+            )
+     }
+     write("Buse Nur", "Çetin")
+
+     Yazarsanız başarılı bir şekilde konsolda alt alta yazdırmış olursunuz. Boşluğu algılar.
+
+     Peki Bunlar Nerede Kullanılır?
+
+     İleriki derslerde asenkron kullanımı göreceğiz, bu derslerde REST API'a istekte bulunacağız, örneğin 1 numaralı ID'ye sahip user'ı getirmesini isteyeceğiz.
+     Asenkron öğrenirken bu ve bu gibi durumlarda sıkça Template Literals kullanacağız. Literal Template'ler REST API'larda sıkça kullanılıyor ve ihtiyacımız olacak.
+
+       * Nesne Yönelimli Programlama (OOP) Nedir? *
+
+     ES6 ile birlikte gelmiştir. JavaScript eskiden sadece frontend(önyüz) için kullanılan bir teknolojiyken zamanla backend(arkauç) için de kullanılan bir teknoloji haline geldi.
+
+     C# gibi Java gibi gelişmiş değil temel düzeyde bir OOP yapısı vardır.
+
+     Peki nedir bu nesneye yönelik programlama?
+
+     Normalde yazılım amacı gerçek hayatı bilgisayarlara anlatmaktır diyebiliriz. Örneğin bir arabamız var bu arabanın yaşı rengi lastiği gibi bir sürü özelliği var ve 100 tane aracın en az
+     10-15 tane ortak özelliği var. OOP'de ise örneğin bir class oluşturuluyor ve bu class'a arabanın özellikleri yazılıyor, programlama dillerinde araba oluşturarak bir nevi bunu entegre etmeye çalışıyoruz.
+     Her işlevin soyutlandığı bir yapı diyebiliriz. Gerçek hayatta gördüğünüz bir nesnenin bilgisayar ortamına aktarılmasıdır.
+
+     Daha Detaylı Açıklama İçin İnceleyiniz: https://www.argenova.com.tr/nesne-yonelimli-programlama-oop-nedir#:~:text=Nesne%20tabanl%C4%B1%20programlama%20(OOP)%3B,d%C3%BCzenleyen%20bir%20programlama%20dili%20modelidir.
+
+       * OOP Giriş - Nesne Oluşturma Ve Yapıcı Metot Kullanımı *
+
+     OOP içinde class adında bir anahtar kelimemiz vardır. Bu anahtar kelimeyi kullanarak insan adında bir sınıf oluşturalım:
+     NOT: İsimlerdirme yaparken Türkçe karakter kullanmamaya dikkat edin. Constructor = Yapıcı Metot
+
+     class Insan {
+        constructor(){
+            console.log("Buse - Yapıcı Metot Çalıştı")
+        }
+     }
+
+     const insan1 = new Insan();   // Bu kısımda insan sınıfından bir obje oluşturduk. insan'ı oluşturabilmek için new isimli key'i kullanıyoruz. Bu kısımda kısaca önce insan sınıfından bir obje sonra nesne oluşturduk.
+
+     Kısaca özet geçeyim. Önce class kullanarak bir sınıf oluşturduk sonra bu sınıfın içinde yapıp metot oluşturduk ve obje kullanarak bu yapıcı metotu çağırdık. İki kere de oluşturabiliriz:
+
+     class Insan {
+        constructor(){
+            console.log("Buse - Yapıcı Metot Çalıştı")
+        }
+     }
+
+     const insan1 = new Insan();
+     const insan2 = newInsan();
+
+     2 kere nesne oluşturduk ve kodumuzu 2 kere yazılmış şekilde konsolda gördük.
+     Bir tane obje oluşturduğunuzda ram bellekte bir tane insan1 bir tane insan2 oluşuyor, bunların ikisi de Insan nesnesini tutuyor.
+
+     Peki Yapıcı Metot (Constructor) Nedir?
+
+     Bir sınıfın içinde özellikler, yapıcı metot, tanımladığımız fonksiyonlar olur. Yapıcı metota parametre verilebilir. Eğer isim adında bir parametre verirsek:
+
+     class Insan {
+        constructor(isim,soyisim,yas,maas){
+            console.log("Buse - Yapıcı Metot Çalıştı")
+        }
+     }
+
+     const insan1 = new Insan("Buse Nur", "Çetin", 18, 100);  // Yapıcı metota parametreler verdiğimiz için bu kısımda bizden parametreler için değer isteyecek. Bu değerleri vermeniz gerek.
+     
+     Şimdi gelin yapıcı metot içerisine özellikler tanımlayalım.
+
+     class Insan {
+        constructor(isim,soyisim,yas,maas){
+            this.isim = isim;
+            this.soyisim = soyisim;
+            this.yas = yas;
+            this.maas = maas
+        }
+     }
+
+     const insan1 = new Insan("Buse Nur", "Çetin", 18, 100);
+
+     Bu şekilde yapıcı metot içine özellikler tanımlayabilir ve parametre kullanarak bu özellikleri verebiliriz. Burda yaptığımı şey şu, bir class'tan nesne oluştururken constructor(yapıcı metot) kullanarak değer ataması yaptık.
+
+     Şimdi de nasıl constructor içine fonksiyon yazabileceğimize bakalım:
+
+     class Insan {
+        constructor(isim,soyisim,yas,maas){
+            this.isim = isim;
+            this.soyisim = soyisim;
+            this.yas = yas;
+            this.maas = maas
+        }
+
+        / Fonksiyonlar class içine değil bu kısıma yazılır.
+
+        bilgileriGoster(){
+            console.log(
+                `
+                İsim: ${this.isim} 
+                Soyisim: ${this.soyisim} 
+                Yaş: ${this.yas} 
+                Maaş: ${this.maas}
+                `
+                )
+        }
+
+        NOT: Yukarıda Template Literals Kullandık.
+     }
+     const insan1 = new Insan("Buse Nur", "Çetin", 18, 100);
+     insan1.bilgileriGoster();  // Metotu çağırdık.
+
+     Başka bir insanın bilgilerini de aynı şekilde konsola yazdırabiliriz.
+
+     class Insan {
+        constructor(isim,soyisim,yas,maas){
+            this.isim = isim;
+            this.soyisim = soyisim;
+            this.yas = yas;
+            this.maas = maas
+        }
+
+        bilgileriGoster(){
+            console.log(
+                `
+                İsim: ${this.isim} 
+                Soyisim: ${this.soyisim} 
+                Yaş: ${this.yas} 
+                Maaş: ${this.maas}
+                `
+                )
+        }
+     }
+     const insan1 = new Insan("Buse Nur", "Çetin", 18, 100);
+     const insan2 = new Insan("Berat", "Çetin", 23, 1000000)
+     insan1.bilgileriGoster();
+     insan2.bilgileriGoster();
+
+     Aynı kodları defalarca kez 2. kişi için de yazmak yerine 1 kere yazıp birçok kez aynı işlemi aynı kodlar üzerinden yapabiliyoruz. insan1 ve insan2'nin hiçbir bağı yok.
+     Sadece farklı 2 obje kullanarak yapıcı metot sayesinde ikisindeki bilgilere de erişebiliyoruz. Daha iyi anlamak için kendiniz deneyin ve debugger koyarak konsolda inceleyin.
+
+     NOT: Bir sınıfın içindeki değişkenlere, özelliklere, tanımlanan metotlara ve fonksiyonlara erişip kullanabilmek için o sınıftan nesne oluşturmanız gerekiyor. Biz nesne oluşturmadan yukarıda yaptığımız işlemleri yapamazdık.
+
+     console.log(insan1.isim)
+     console.log(insan2.isim)
+
+     yazarak insan1 ve insan2'nin yalnızca isimlerine de erişebilirsiniz. İsim özelliğine erişebilmemizi sağlayan şey OOP'tur.
+
+       * Static Nedir *
+
+     Statik isminin zaten duran, değişmeyen gibi bir anlamı var. Bazı değişkenlerimizi veya metotlarımızı statik olarak tanımladığımızda class'tan nesne türetmeden direkt sınıf ismi üzerinden özelliklerimize erişebiliyoruz.
+     Static, Yapıcı Metot ve OOP gibi konuları anlamak biraz zor olduğundan örnekler yaparak ilerleyeceğiz. Size tavsiyem kodları denemeniz, değiştirmeniz.
+
+     Örnek:
+
+     class Matematik{
+        topla(a,b){
+            console.log(a+b)
+        }
+        cikar(a,b){
+            console.log(a-b)
+        }
+        carp(a,b){
+            console.log(a*b)
+        }
+        bol(a,b){
+            console.log(a/b)
+        }
+     }
+
+     const islem = new Matematik();
+     islem.topla(10,4);
+
+     Burada sınıftan bir nesne türettik, referansımız üzerinden topla adındaki metota ulaştık, sonrasında yoplanan değeri konsola yazdırdık.
+     Peki static bunun neresinde?
+
+     class Matematik{
+        static topla(a,b){
+            console.log(a+b)
+        }
+        cikar(a,b){
+            console.log(a-b)
+        }
+        carp(a,b){
+            console.log(a*b)
+        }
+        bol(a,b){
+            console.log(a/b)
+        }
+     }
+
+     const islem = new Matematik();
+     islem.topla(10,4);
+
+     Yazarsanız konsolda hata alacaksınız çünkü bir sınıfın içindeki metot ya da fonksiyon statik olarak tanımlanırsa sizler buna nesne üzerinden erişemezsiniz.
+     Peki nasıl erişeceğiz?
+
+     Sınıf ismi üzerinden erişeceğiz :
+
+     class Matematik{
+        static topla(a,b){
+            console.log(a+b)
+        }
+        cikar(a,b){
+            console.log(a-b)
+        }
+        carp(a,b){
+            console.log(a*b)
+        }
+        bol(a,b){
+            console.log(a/b)
+        }
+     }
+
+     Matematik.topla(10,9)
+
+     NOT: Bir şey statik olarak tanımlanmamışsa nesne üzerinden erişilir, statik olarak tanımlanmışsa class izmi üzerinden erişilir.
+     Static = Class üzerinden erişim
+     Static değil = Nesne üzerinden erişim
+
+     Bir function veya özellik statikse bu function veya özellik nesneye değil class'a özgüdür. Değilse nesneye özgüdür.
+
+     Peki biz bu statiği nerede kullanacağız?
+
+     Nesne türetmek maliyetli bir iş çünkü her nesne türettiğinizde bu RAM bellekte yer kaplıyor, büyük bir proje yapıyorsanız bir class oluşturur ve 
+     bu class'ın içine metotlar yazarsınız, bu metotları statik olarak tanımlayıp proje içerisine serpiştiririz. Eğer statik olarak yazmasaydık her bir yerde
+     nesne türetip RAM bellekte fazlaca yer kaplayan bir uygulamaya sahip olacaktık.
+
+     Örnek :
+
+     class Insan{
+        static languagesCount=10;
+
+        constructor(firstName, lastName, salary){
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.salary = salary;
+        }
+
+        writeInfo(){
+            console.log(this.firstname,this.lastName,this.salary,this.languagesCount)
+        }
+     }
+
+     const insan1 = new Insan("Buse Nur","Çetin", "1");
+     insan1.writeInfo();
+
+     Yazarsak static olarak tanımladığımız languagesCount değeri bize konsolda undefined olarak dönecektir. Statik olarak tanımlanmadığı için isim,soyisim, maaş
+     değerlerine erişebilirken statik olarak tanımlanan languagesCount değeri undefined döner. Statik'e yalnızca class ismi üzerinden erişilebildiği için göremedik.
+     Bunu görmek için aşağıdaki kodu yazarız:
+
+     console.log(Insan.languagesCount);
+
+     Bir şey static olarak tanımlanmazsa nesne türeterek erişiriz, statik olarak tanımlanan şeye ise sınıf(class) ismi üzerinden erişim sağlarız. Statik olarak tanımlamazsanız
+     sınıftan erişemezsiniz, static olarak tanımlanırsa da nesne üzerinden erişemezsiniz. Çift yönlü erişim yoktur. Static değilse nesneye özgü, statik ise class'a özgüdür.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2869,3 +3795,4 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
  
 
 */
+
