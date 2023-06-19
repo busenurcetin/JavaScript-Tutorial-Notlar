@@ -4296,6 +4296,149 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
            })
           .catch((err) => console.log(err))
 
+            * FETCH API *
+           
+           Fetch API, server'a istek atmak için kullandığımız window objesi içinde yer alan bir API çeşididir.
+           Fetch API, promise ile beraber çalışıyor. Fetch API içine isteğimizi atıyoruz, sonrasında .then ve .catch ile yakalıyoruz.
+           Fetch API geriye PROMISE döner.
+
+           function getStudents(url){
+            fetch(url)
+            .then((response)=>{
+                return response.json();
+            })
+            .then((data)=> console.log(data))
+            .catch((err) => console.log(err))
+           }
+
+           getStudents("students.json")
+
+           JSON almak istediğimiz veriyi almak için kullanılır. İlk başta promise'leri return ettik sonrasında .then ve .catch ile bunu
+           yakaladık. Dönen response tipinden dolayı 2 kere .then ile yakaladık.
+
+           Arrow function'dan hatarlarsanız kod tek satırdan oluşuyorsa return yazmanıza ve süslü parantezlere gerek yoktu. 
+           Bunun için bir örnek yapalım:
+
+           function getData(url){
+            fetch(url)
+            .then((response)=> response.json());
+            .then((data)=> console.log(data))
+            .catch((err) => console.log(err))
+           }
+
+           getData("https://jsonplaceholder.typicode.com/comments");
+
+           Fetch API'ı bu şekilde kullanmak yerine başka bir şekilde de kullanabiliriz:
+
+           function getData(url){
+            return fetch(url)
+           }
+
+           getData("https://jsonplaceholder.typicode.com/users");
+           .then((response)=> response.json())
+           .then((data)=>console.log(data))
+           .catch((err)=>console.log(err))
+
+           Başka Bir Yöntem:
+
+           function getData(url){
+            const promise = fetch("https://jsonplaceholder.typicode.com/albums")
+            console.log(promise)
+           }
+
+           getData("https://jsonplaceholder.typicode.com/users");
+
+            * POST Kullanma *
+
+           Şuana kadar hep GET kullanarak veri aldık şimdi de POST kullanarak veri yükleyeceğiz.
+
+           function saveStudents(){
+            fetch(https://jsonplaceholder.typicode.com/users),{
+                method: "POST",
+                headers : {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    "id" : 1,
+                    "firstname": "Buse",
+                    "lastname": "Çetin"
+                })
+            }
+           }
+
+           Fetch adresine POST metot tipiyle application/json tipinde değer vereceğimizi ve karşıya data değerini
+           yükleyeceğimizi belirttik. Yükledikten sonra başarılı olup olmadığını .then ve .catch kullanarak kontrol edebilirsiniz.
+
+           * ASYNC AWAIT *
+
+           ASYNC AWAIT, promise'lerden ve callback'lerden çok daha gelişmiş bir yöntemdir. 
+
+            * ASYNC AWAIT Olmadan *
+
+           document.querySelector("#button").addEventListener("click",()=>{
+            fetch("https://jsonplaceholder.typicode.com/posts/1")
+            .then((response)=> response.json())
+            .then((post)=>{
+                console.log(post)
+                fetch(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)
+                .then((response)=> response.json())
+                .then((comments)=> console.log(comments))
+            })
+           })
+
+            * ASYNC AWAIT Kullanarak *
+
+           document.querySelector("#button").addEventListener("click",async ()=>{
+            const post = await (await fetch ("https://jsonplaceholder.typicode.com/posts/1")).json()
+            const comments = await(await fetc(`https://jsonplaceholder.typicode.com/comments?postId=${post.id}`)).json
+            console.log(post,comments)
+           })
+
+           İlk önce fetch'le adresimizi yazdık. Fetch bize promise tipinde dönüş yapar sonrasında .then kullanarak post olarak bunu yakalayacağız. 
+           ID'si 1 olan postun yorumlarını getireceğiz. Bir tane daha fetch açtık ve dinamik olarak Post ID'sini yazdık.
+
+           Kısaca bir daha üzerinden geçelim. Ekrandan ID'si button olan butona basınca arrow function'a girdik sonrasında ID'si 1 olan postu fetch ile 
+           aldık ve gelen post promise ile döndüğü için .then ile yakaladık, sonrasında response.json yazarken içinde almak istediğimiz veriyi aldık.
+           Sonrasında dönen promise'i bir sonraki .then ile yakaladık. Sonrasında dinamik olması gerektiği için dinamik şekilde ID'yi aldık ve .then ile yakaladık.
+
+           Await yalnızca asenkron fonksiyonlarda kullanılabilir bu yüzden await kullanabilmek için, arrow function'ın başında async keyword'unu kullanmamız gerekiyor.
+           Yani eğer bir yerde await kullanıyorsanız, kullanmış olduğunuz fonksiyonun başına async yazmanız gerekiyor. Await ile bekletme yapılır. Bunun amacı 1. satırdaki
+           kod çalıştıktan sonra 2. satırdaki kod çalışsın yani asenkron problemi oluşmasın diye kullanırız.
+
+           Fetch API ile bir yere istek attığınızda bu asenkron çalışıyor. Asenkron problemini önlemek için await ile bir önceki satırı bitirmesini beklemesini sağlıyoruz.
+
+           Gördüğünüz gibi ASYNC Await ile kod hem daha kısa hem daha okunabilir oluyor ama tüm bunları iyi anlamak ve gerektiğinde hepsini kullanabilmek için callback ve promise'i de
+           bilmemiz gerek.
+
+            * Asenkron Bölümü Özet *
+
+           Senkron: Sırayla çalışan işlem parçacıkları.
+           Asenkron: Eş zamanlı birden fazla iş yapmak için kullanılır.
+
+           JavaScript senkron çalışan bir programlama dilidir.
+
+            * Asenkron Çalışmasına Sebep Olanlar *
+
+           1- Timing(Zaman)
+           2- Event(Olay)
+           3- HTTP İstekleri
+             - XmlHttpRequest
+             - Fetch API
+             - Axios
+        
+            * Asenkronu Yönetmek İçin *
+
+           1- Callback - ES6 - Öncesi
+           2- Promise - ES6 - 2015
+           3- ASYNC AWAIT - ES7
+
+
+
+
+
+
+
+
 
 
 
