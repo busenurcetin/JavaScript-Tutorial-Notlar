@@ -4133,6 +4133,174 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
 
          getComments("https://jsonplaceholder.typicode.com/comments")
 
+          * PROMISE *
+
+         Buraya kadar mola vermediyseniz 1 saat mola vermenizi tavsiye ederim çünkü bu konu diğer konulara kıyasla çok daha uzun olacak.
+
+         PROMISE'ler CALLBACK'lerin alternatifi olarak kullanılan yapılardır. CALLBACK'ler yerine PROMISE'leri kullanıp asenkron yapıyı senkrona çevirerek
+         yönetebileceğiz. Promise'ler 3 aşamadan oluşur. 1- Pending(Bekleme) 2-Fullfiiled(İşlem Başarılı) 3-Rejected(Reddedildi)
+
+         Bir isteğ atıyoruz, isteği attıktan sonra zaten bekleme(pending) modundayız. Eğer pending işlemi başarılı olursa fullfiiled diğer adıyla resolve
+         olur, yani işlem başarılıdır. İşlem başarısız olursa reject olur.
+
+         Başarılı ve başarısız olma durumunu yönetebilmemiz için .then ve .catch adında 2 tane yapımız var. Başarılıysa .then, başarısızda .catch kullanırız.
+
+         Sonraki notlarda anlamadığınız bir yer olursa bıraktığım linkten daha detaylı inceleyebilirsiniz: https://www.w3schools.com/js/js_promise.asp
+
+         İlk başta arrow function kullanarak bir promise oluşturalım. Bu promise resolve ve reject adında 2 parametre alsın.
+
+         const promise1 = new Promise((resolve, reject)=>{
+
+         })
+
+         Daha sonra bu promise için belli kontroller sağlayarak konsola yazdıralım:
+
+         let check = true;
+
+         const promise1 = new Promise((resolve, reject)=>{
+            if(check){
+                resolve("Promise Başarılı");
+            }else{
+                reject("Promise Başarısız");
+            }
+         })
+
+          console.log(promise1);
+
+          Bu isimlendirmeleri bilmeniz iyi olur çünkü çoğu yazılımcı bu şekilde veya benzer isimlendirme yapıyor. İsimlendirme yaparken Türkçe kullanmamaya dikkat edin.
+         
+          Burdaki mantık şöyle: Başarılı olduğunda resolve adındaki function'ı tetiklerken, başarısız olma durumunda reject'i tetikliyorsunuz. Promise'i konsolda incelediğinizde
+          Promise'in içindeki functionları görebilirsiniz. Bunların kullanımını birazdan yapacağız. Konsolda yazılan promise'te 2 önemli şey daha var. Bunlar promiseState ve promiseResult
+          Promise başarılı yazısı resolve'un içinden promiseResult'a geliyor. let check = true; yerine let check = false; yazarsanız reject tetiklenecek ve promise başarısız olacak.
+
+          Bir promise'imiz varsa 2 tane durumu var. Başarılı olursa resolve, başarısız olursa reject tetikleniyor.
+
+            * PROMISE Yakalama *
+
+          Şuana kadar Promise nedir? Nasıl kullanılır? Bunları öğrendik ama bunları .then ve .catch kullanarak yakalamadık. Şimdi bunu öğreneceğiz.
+
+         let check = true;
+
+         function createPromise(){
+            return new Promise((resolve, reject)=>{
+                if(check){
+                    resolve("Promise Başarılı Oldu");
+                }else{
+                    reject("Promise Başarısız Oldu");
+                }
+            })
+          }
+
+         createPromise()
+
+         Değeri yakalayabilmek için noktalı virgül koymadan .then yazıp arrow function kullanacağız. Arrow function'a da parametre olarak response vereceğiz.
+         Başarısız olma durumu içinse .catch kullanacağız.
+
+         let check = true;
+
+         function createPromise(){
+            return new Promise((resolve, reject)=>{
+                if(check){
+                    resolve("Promise Başarılı Oldu");
+                }else{
+                    reject("Promise Başarısız Oldu");
+                }
+            })
+          }
+
+         createPromise()
+         .then((response)=>{
+            console.log(response);
+         })
+         .catch((error)=>{
+            console.log(error)
+         })
+
+         Bu çok önemli çünkü sürekli kullanacağız bu yüzden deneyerek öğrenmenizi tavsiye ederim.
+
+         .catch ve .then dışında .finally adında bir function'ımız var, bu da bir arrow function. 
+         .finally başarılı da başarısız da olsa çalışan bir fonksiyon. Her halükarda çalışır.
+
+         let check = true;
+
+         function createPromise(){
+            return new Promise((resolve, reject)=>{
+                if(check){
+                    resolve("Promise Başarılı Oldu");
+                }else{
+                    reject("Promise Başarısız Oldu");
+                }
+            })
+          }
+
+         createPromise()
+         .then((response)=>{
+            console.log(response);
+         })
+         .catch((error)=>{
+            console.log(error)
+         })
+         .finally(()=> console.log("Her Koşulda Çalışır."))
+
+         let check = true; kısmını let check = false; olarak yazarsanız her iki durumda da çalıştığını görebilirsiniz.
+
+         Promise'leri de Callback'ler gibi asenkron yapıları senkrona çevirmek için kullanıyoruz. Callback'lerin alternatifi.
+         ES6 ile beraber hayatımıza girdi, hala büyük projelerde kullanılıyor. Callback'lerin gelişmiş versiyonu diyebiliriz.
+
+           * Asenkron Yapı Oluşturup PROMISE Kullanarak Senkrona Çevirmek * * PROMISE + XMLHttpRequest *
+
+         Promise nedir? Ne değildir? Nasıl kullanılır? Az çok öğrendik. Şimdi de PROMISE kullanarakasenkron yapıları nasıl
+         senkrona çevirebileceğimize bakalım, önceki derste CALLBACK'ler ile yaptığımız şeyin aynısını PROMISE'lerle yapacağız.
+
+         Bunu yapmadan önce kendi localimizdeki dosyayı çekmeye çalışalım. Try-catch kullanarak hata yönetimi de yapacağız. Hata olmazsa try hata olursa catch çalışacak.
+         try-catch JavaScript yazıp mutlaka göz atın. Hatalara try-catch kullanarak bakacağız.
+
+         function readStudents(url){
+              return new Promise((resolve, reject)=>{
+              const xhr = new XMLHttpRequest();
+              try {
+              xhr.addEventListener("readystatechange", ()=>{
+                 if(xhr.readyState===4 && xhr.status===200){
+                 resolve(JSON.parse(xhr.responseText));
+              }
+              }) 
+             } catch (error) {
+                   console.log("JSON'da Problem Var.")
+                   reject(error);
+              }
+              xhr.open("GET", url); 
+              xhr.send();
+              })} 
+              readStudents("students.json") 
+              .then((data)=> console.log(data))
+              .catch((err)=>console.log(err))
+
+
+           * Birden Çok Promise Tanımlamak *
+
+         Promise.all() = Tanımlanan promise'leri dizi olarak alarak hepsini seçmenizi sağlar. Bu 3'ü de başarılı olursa .then'e girer,
+         1 tanesi bile hata alırsa reject eder.
+
+           * Birden Çok Promise Tanımlamak - Örnek *
+
+          const pl = Promise.resolve("Birinci promise başarılı.")
+          const p2 = Promise.resolve("İkinci promise başarılı.")
+          const p3= new Promise((resolve, reject) =>{
+          resolve("Üçüncü promise başarılı.")
+          })
+          const p4 = Promise.reject("Hata var.");
+
+          Promise.all([pl,p2,p3,p4])
+           .then((res)=>{
+          console.log(res)
+           })
+          .catch((err) => console.log(err))
+
+
+
+
+
+
 
 
 
@@ -4158,8 +4326,3 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
  
 
 */
-
-
-
-
-
