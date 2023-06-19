@@ -3763,12 +3763,375 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
      Bir şey static olarak tanımlanmazsa nesne türeterek erişiriz, statik olarak tanımlanan şeye ise sınıf(class) ismi üzerinden erişim sağlarız. Statik olarak tanımlamazsanız
      sınıftan erişemezsiniz, static olarak tanımlanırsa da nesne üzerinden erişemezsiniz. Çift yönlü erişim yoktur. Static değilse nesneye özgü, statik ise class'a özgüdür.
 
+       * Asenkron Yapısına Giriş *
+
+     1- JavaScript senkron çalışan bir programlama dilidir. Yukarıdan aşağıya derlenir ve ilk önce her zaman en yukarıdakini yazdırarak ilerler.
+
+     2- JavaScript bazı durumlarda asenkron çalışır. JavaScript'in asenkron çalıştığı zamanlar: 1- Timing(Zamanlama)  2- Event(Olay)  3- Http İstekleri
+
+     Web API tarafından yönetilen her şey asenkron çalışır.
+
+     Kısaca JavaScript senkron çalışan bir programlama dili her şey sırayla çalışıyor ama JavaScript'i senkrondan asenkrona çeviren bazı şeyler var bunlar da yukarıda yazdığım şeyler.
+
+        * Timing Kullanarak Asenkron Çalıştırma *
+
+     Örnek 1:
+
+     console.log("Buse Nur");
+
+     setTimeout(()=>{
+        console.log("Süre doldu ve çalıştı.")
+     }, 1000)
+
+     console.log("Çetin");
+
+     Örnek 2:
+
+     console.log("Buse Nur");
+
+     setTimeout(()=>{
+        console.log("1000ms süre doldu ve çalıştı.")
+     }, 1000)
+
+     setTimeout(()=>{
+        console.log(" 500ms süre doldu ve çalıştı.")
+     }, 500)
+
+     console.log("Çetin");
+
+     Örnek 3:
+
+     console.log("Buse Nur");
+
+     setTimeout(()=>{
+        console.log("1000ms süre doldu ve çalıştı.")
+     }, 1000)
+
+     setTimeout(()=>{
+        console.log(" 500ms süre doldu ve çalıştı.")
+     }, 500)
+
+     setTimeout(()=>{
+        console.log(" 500ms süre doldu ve çalıştı.")
+     }, 750)
+
+     console.log("Çetin");
+
+     Konuyu daha iyi anlamak için bu örnekleri yazıp konsol çıktısını inceleyiniz.
+
+     Asenkron programlama ne kadar güzel olsa da önce Buse'yi sonra Çetin'i sonra 1000ms olan kod parçasını çalıştırmak isteyebiliriz bunlar için belli kod parççaları kullanacağız.
+
+        * CALLBACK - PROMISE - ASYNC & AWAIT *
+
+     Asenkron programlamayı yönetmek için kullanılır. Asenkron yapıları senkrona çevirip yönetiyoruz.
+
+        * Asenkron Problemi *
+
+     İlk başta user ID'yi bulacağız sonra user ID'si 5 olanı yakalamaya çalışacağız.
+
+     const users = [
+        {
+            userId: 5,
+            post : "Buse Post - 1"
+        },
+        {
+            userId: 5,
+            post : "Buse Post - 1"
+        },
+        {
+            userId: 5,
+            post : "Buse Post - 1"
+        },
+        {
+            userId: 6,
+            post : "Berat Post - 1"
+        },
+        {
+            userId: 7,
+            post : "Burak Post - 1"
+        },
+     ]
+
+     function getUserId(){
+        setTimeout(()=> {
+            Servise gittik ve cevabı aldık.
+            return 5;
+        }, 1000)
+     }
+
+     function getPostByUserId(userId){
+        Gerçek bir Rest API'a istek attığımızı varsayalım.
+        setTimeout(()=> {
+            users.forEach((user)=> {
+                if(user.userId===userId){
+                    console.log(user.post);
+                }
+            })
+        }, 500)
+     }
+
+     let userId = getUserId();
+     getPostByUserId(userId);
+
+     İlk başta user Id metotuna gitti 1 saniye bekledikten sonra 5 değerini döndü sonrasında diğer metota gitti 5'i aldı ve metotu yakaladık. userId'yi kontrol edip post'u alıyoruz.
+     Bunun çalışmama sebebi setTimeout metotunun asenkron çalışmasıdır. Her iki metotta asenkron çalışıyor daha userId'yi alamadan getPost metotu çalıştı.
+
+     Bu problemi çözebilmek için asenkronu senkrona çevireceğiz. Bunu yapmak için de CALLBACK - PROMISE - ASYNC & AWAIT kullanacağız.
+
+        * Nedir Bu CALLBACK *
+
+     En eski yöntem callback'lerdir. Çok eski bir yöntem. Kullanılmıyor, kullanmanızı da tavsiye etmem. Asenkronu senkrone çevirdiğimiz için normalde 1 saniyede işlem tamamlanırken 1.5 saniyede tamamlanacak.
+     Süre bakımından dezavantajlı olsa bile çalışma mantığı açısından karda olacağız.
+
+     function getName(){
+        setTimeout(() => {
+            servisten ismi getirdi varsayalım.
+            console.log("Buse Nur");
+        }, 1000)
+     }
+
+     function getSurname(){
+        setTimeout(() => {
+            console.log("Çetin");
+        }, 500)
+     }
+
+     getName();
+     getSurname();
+
+     İlk önce getName'i çağırıp isim almak istememize rağmen asenkron çalıştığı için önce getSurname metotu sonra getName çalıştı.
+
+       * Callback Kullanarak Asenkronu Senkrona Çevirmek *
+
+     CALLBACK: Bir fonksiyonu bir fonksiyona parametre geçerek asenkron yapıyı senkrona çevirir.
+
+     Örnek 1:
+
+     Öncelikle bir paramtere alacağız sonra soyisim fonksiyonunu isim fonksiyonu içine koyarak istediğimiz değere ulaşacağız.
+     Parametre olarak callback ismini verdim fakat siz Ayşe Ali Veli gibi isimler kullanabilirsiniz.
+
+     function getName(callback){
+        setTimeout(() => {
+            servisten ismi getirdi varsayalım.
+            console.log("Buse Nur");
+        }, 1000)
+     }
+
+     function getSurname(){
+        setTimeout(() => {
+            console.log("Çetin");
+        }, 500)
+     }
+
+     getName(getSurname);
+
+     Böyle yaptığımızda parametre olarak verdiğimiz callback = getSurname oluyor.
+
+        * Arrow Function ve Callback Kullanarak İsimsiz FOnksiyon Verme *
+
+     function getName(callback){
+        setTimeout(() => {
+            let name = "Buse";
+            callback(name);
+        }, 1000)
+     }
+
+     function getSurname(name,callback){
+        setTimeout(() => {
+            let surname = "Çetin";
+            callback(surname)
+        }, 500)
+     }
+
+     getName((name)=> {
+        getSurname(name,(surname)=>{
+            console.log(name, surname)
+        }
+     })
+
+     Callback Hell yazıp internetten aratarak niye callback'leri kullanmayacağımızı daha iyi anlayabilirsiniz. Yukarıdaki örnekte de 
+     gördüğünüz gibi Callback'ler okunabilirliği çok fazla azaltıyor.
+
+     Yukarıdaki örnekte kişinin ismini bulduk sonra ismini kullanarak soyismini bulduk. Şimdi de soyismini de kullanarak yaşını bulalım.
+
+     function getName(callback){
+        setTimeout(() => {
+            let name = "Buse";
+            callback(name);
+        }, 1000)
+     }
+
+     function getSurname(name,callback){
+        setTimeout(() => {
+            let surname = "Çetin";
+            callback(surname)
+        }, 500)
+     }
+
+     function getAge(name, surname, callback){
+        setTimeout(()=> {
+            let age = 18;
+            callback(age)
+        }, 300)
+     }
+
+     getName((name)=> {
+        getSurname(name,(surname)=>{
+            getAge(name, surname, (age)=> {
+                console.log(name, surname, age);
+            })
+        }
+     })
+
+       * Daha Önce 'Undefined' Aldığımız Hatanın CALLBACK Çözümü *
+
+     function getUserId(callback){
+        setTimeout(()=> {
+            Servise gittik ve cevabı aldık.
+            return 5;
+        }, 1000)
+     }
+
+     function getPostByUserId(userId){
+        Gerçek bir Rest API'a istek attığımızı varsayalım.
+        setTimeout(()=> {
+            users.forEach((user)=> {
+                if(user.userId===userId){
+                    console.log(user.post);
+                }
+            })
+        }, 500)
+     }
+
+     let userId = getUserId();
+     getPostByUserId(userId);
+
+       * Undefined Aldığımız Kod Buydu *
+
+     Lütfen ilk önce kendiniz yapmaya çalışın.
+
+       * Çözüm *
+
+     const users = [
+    {
+        userId: 5,
+        post : "Buse Post - 1"
+    },
+    {
+        userId: 5,
+        post : "Buse Post - 1"
+    },
+    {
+        userId: 5,
+        post : "Buse Post - 1"
+    },
+    {
+        userId: 6,
+        post : "Berat Post - 1"
+    },
+    {
+        userId: 7,
+        post : "Burak Post - 1"
+    },
+ ]
 
 
+     function getUserId(callback){
+    setTimeout(()=> {
+        let userId=5;
+        callback(userId);
+    }, 1000)
+     }
 
+      function getPostByUserId(userId){
+         setTimeout(()=> {
+             users.forEach((user)=> {
+                 if(user.userId===userId){
+                     console.log(user.post);
+                     return userId;
+                 }
+             })
+         }, 500)
+      }
 
+      getUserId(getPostByUserId);
 
+        * AJAX Nedir? *
 
+      AJAX'ın açılımı "Asynchronous JavaScript And XML"'dir. AJAX bir programlama dili değildir. Sunucuya istek atıp veri almak için kullanılır.
+
+      Daha iyi anlamak için W3 Schools'tan "What is AJAX" yazısını okumanızı tavsiye ederim. AJAX tarayıcı ve server'ı bağlıyor. Tarayıcıdan veri almak için
+      kullanılıyor gibi düşünebilirsiniz.
+
+        * AJAX Kullanımı *
+
+      AJAX'ın içinde bir objemiz var ve biz bu objenin class'ından nesne türetiyoruz. Konsola alttaki kod parçasını yazarak özelliklere bakabilirsiniz.
+
+      cont xhr = new XMLHttpsRequest();
+      console.log(xhr);
+
+      Bunların içerisinde 3 önemli özellik var.
+       1- Status
+         Server'a istek attıktan sonra başarılı olursa 200, bulunamadıysa 403, sayfa yoksa 404 kodu gelir.
+
+       2- Ready State
+         0- Daha request(istek) atılmadı.
+         1- Sunucu bağlantısı kuruldu.
+         2- Request ulaştı.
+         3- Request işleniyor.
+         4- Request bitti.
+    
+     Ready State 4 ise cevap hazırdır. Cevap hazırsa responseText özelliğini kullanırız.
+       
+       3- onreadystatechange
+
+         Ready state 0 sonrasında 1 - 2 - 3 - 4 olarak sürekli değişiyor. Bu değişiklik oldukça bir şeyler yaptırmak istiyorsak
+         onreadystatechange kullanırız. Daha iyi anlamak için bıraktığım linki inceleyiniz: https://www.w3schools.com/js/tryit.asp?filename=tryjs_ajax_onreadystage
+
+         Karşıdan veri almak için GET http tipini kullandıktan sonra veri almak istediğimiz dosyayı belirtip, koşulları oluşturup değişikliği yapıyoruz. send kullanarak isteği
+         server'a gönderiyoruz, serverdan gelen cevabı da alıyoruz. Eski bir yöntemdir çok kullanılmaz ama yeninn mantığını anlamak için eskiyi bilmemiz gerekli.
+
+           * AJAX Kullanımı *
+
+         AJAX, daha önce de belirttiğim gibi uygulamamızdan herhangi bir server'a gidip ordan veri almamızı sağlayan bir ara katmandır.
+
+           * AJAX Örnekli Anlatım *
+
+         Bu kısımda AJAX nasıl kullanılır? sorusuna kodlayarak cevap verilecek fakat bu kısmı anlayabilmek için REST API nedir? diye Google'da aratmanızı tavsiye ederim. 
+         Link: https://www.hosting.com.tr/bilgi-bankasi/rest-api/
+
+         Kısaca REST API'lar bir web servisidir, biz http protokolleri üzerinden web servislere istek atıp cevap alırız.
+
+         Örnek için kullanılan websitesi: https://jsonplaceholder.typicode.com/
+
+         Örnek:
+
+         İlk başta yorumları getirelim. Bir URL bir ID alsın. Http isteği başarılı olup geldiğinde cevabı konsola yazdıralım.
+         URL'i hazırlamak için bir metot yazalım. Bu metot sayesinde ID'nin boş olup olmama durumunu kontrol edelim. Tüm comments(yorumlar) almak için de spesifik bir ID girmek yerine null yazıyoruz.
+         JSON'a çevrilmiş olarak kullanmak istediğimiz için de JSON.parse metotunu kullanıyoruz.
+
+         function prepareURL(url, id){
+            if(id===null){
+                return url;
+            }
+            return `${url}?postId=${id}`
+         }
+
+         function getComments(url, id){
+            let newURL = prepareURL(url, id);
+
+            const chr = new XMLHttpsRequest();
+            xhr.addEventListener("readystatechange", ()=>{
+                if(xhr.readyState===4 && xhr.statıs===200){
+                    console.log(JSON.parse(xhr.responseText));
+                }
+            })
+
+            xhr.open("GET", newURL)
+            xhr.send();
+         }
+
+         getComments("https://jsonplaceholder.typicode.com/comments")
 
 
 
@@ -3795,4 +4158,8 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
  
 
 */
+
+
+
+
 
