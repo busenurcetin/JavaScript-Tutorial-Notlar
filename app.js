@@ -4432,40 +4432,7 @@ Math Sınıfının İÇinde Floor Diye Bir Sınıf Var Bu Sınıf Bizim Sayımı
            2- Promise - ES6 - 2015
            3- ASYNC AWAIT - ES7
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
+            * Bu kısıma kadar gelebilecek özveriyi gösterdiğin için seni tebrik ediyorum. Uzun bir yolun sonuna geldin, kendinle gurur duy. Bundan sonra sadece *
+            * proje ve pratik yaparak kendini geliştirmeye, anlamadıklarını öğrenmeye devam et. Tebrikler! *
 
 */
