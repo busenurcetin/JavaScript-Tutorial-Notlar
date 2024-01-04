@@ -9,20 +9,22 @@
 
 <br>
 
-<h3> JavaScript sayesinde dinamik yapılar oluştururuz. JavaScript kullanmadan yapılan web siteleri statiktir. Web uygulamaları kullanmak isteyen herkes öğrenmelidir.
+ JavaScript sayesinde dinamik yapılar oluştururuz. JavaScript kullanmadan yapılan web siteleri statiktir. Web uygulamaları kullanmak isteyen herkes öğrenmelidir.
 Auto rename, better comments, javascript console utils, javascript(ES6) code snippets gibi eklentileri VSCode'a indirmemiz JavaScript projeleri yaparken ve JavaScript öğrenirken fazlasıyla yardımcı olacaktır. </h3>
 
 <br>
 
-`JavaScript’i html sayfasına dahil etmek için head veya body tagları içine   <script> </script> olarak yazarız. JavaScript’in istediğimizi yapması için html etiketlerinin en altına body’nin içine koymamız daha iyi olur. Console.log(“”) konsola şunu yaz bunu yaz gibi bir işe yarıyor. App.js’te kodları yazdıktan sonra index’ten ulaşmak istiyorsak index.html içine yine body’nin en alt kısmına <script src=“app.js”></> yazarız.`
+JavaScript’i html sayfasına dahil etmek için head veya body tagları içine   <script> </script> olarak yazarız. JavaScript’in istediğimizi yapması için html etiketlerinin en altına body’nin içine koymamız daha iyi olur. Console.log(“”) konsola şunu yaz bunu yaz gibi bir işe yarıyor. App.js’te kodları yazdıktan sonra index’ten ulaşmak istiyorsak index.html içine yine body’nin en alt kısmına <script src=“app.js”></> yazarız.
 
-<h3>
+
 
 <br>
 
-JavaScript’te çıktı vermek için console.log(), document.write() veya alert() kullanırız. 
-Yan yana gelmesini istiyorsak document.write istemiyorsak arada boşluk istiyorsak document.writeln yazarız.
-Console.clear(); kullanırsak konsolu temizlemiş oluruz.
+JavaScript’te çıktı vermek için console.log(), document.write() veya alert() kullanırız.
+<br>
+Yan yana gelmesini istiyorsak <b>document.write</b> istemiyorsak arada boşluk istiyorsak <b>document.writeln</b> yazarız.
+<br>
+<b>Console.clear();</b> kullanırsak konsolu temizlemiş oluruz.
 
 <br>
 
@@ -38,7 +40,7 @@ Console.log(document.location.host); dediğimizde uygulamayı kurduğumuz host�
 
 <br>
 
-alert(“merhaba”); yazarsak sayfamızda merhaba adlı uyarı yazısı çıkar.
+<b> alert(“merhaba”); </b> yazarsak sayfamızda merhaba adlı uyarı yazısı çıkar.
 
 <br>
 
